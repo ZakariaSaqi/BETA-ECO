@@ -8,9 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link
-      rel="stylesheet"
-      href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css"
-    />
+      rel="stylesheet"  href="bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="fonts/css/all.min.css" />
     <link rel="stylesheet" href="css/animate.css" />
     <link rel="shortcut icon" href="images/iconWhite.svg" type="image/x-icon" />
@@ -39,7 +37,7 @@
               ></span>
               <span>Services <i class="ion-ios-arrow-forward"></i></span>
             </p>
-            <h1 class="mb-0 bread">Services</h1>
+            <h1 class="mb-0 bread">Nos services</h1>
           </div>
         </div>
       </div>

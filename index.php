@@ -5,7 +5,7 @@
 	<title>BETA ECO</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="fonts/css/all.min.css" />
 	<link rel="stylesheet" href="css/animate.css" />
 	<link rel="shortcut icon" href="images/iconWhite.svg" type="image/x-icon" />

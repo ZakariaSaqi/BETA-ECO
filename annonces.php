@@ -4,7 +4,7 @@
     <title>BETA ECO</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/css/all.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="shortcut icon" href="images/iconWhite.svg" type="image/x-icon">
@@ -22,8 +22,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">Blog</h1>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Annonces <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread">Annonces</h1>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -48,7 +48,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -62,7 +62,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -77,7 +77,7 @@
 
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -91,7 +91,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_5.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_5.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -105,7 +105,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_6.jpg');">
+              <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/image_6.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
