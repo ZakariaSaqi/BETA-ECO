@@ -2,24 +2,16 @@
 <html lang="en">
 
 <head>
-	<title>BETA ECO</title>
+	<title>BETA ECO - Contact</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="fonts/css/all.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="shortcut icon" href="images/iconWhite.svg" type="image/x-icon">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/style.css">
+	<?php include('links.css') ?>
 </head>
 
 <body>
 	<?php include('navbar.html') ?>
 	<!-- END nav -->
-	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -98,7 +90,8 @@
 											<span class="fa fa-map-marker"></span>
 										</div>
 										<div class="text pl-3">
-											<p><span>Adresse :</span><a href="#mappp">Quartier El Quodes N32, Chichaoua, Maroc</a></p>
+											<p><span>Adresse :</span><a href="#mappp-">Quartier El Quodes N32,
+													Chichaoua, Maroc</a></p>
 										</div>
 									</div>
 									<div class="dbox w-100 d-flex align-items-center">
@@ -127,14 +120,14 @@
 			</div>
 		</div>
 	</section>
-	<section class="ftco-section bg-light" id="mappp">
+	<section class="ftco-section bg-light" id="mappp-">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-				<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2291.6877510442982!2d-8.765331302597149!3d31.543726042811052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdae3db0948b7a0d%3A0x27d0a82b92ff3c42!2z2LTZiti02KfZiNip!5e1!3m2!1sfr!2sma!4v1685730065379!5m2!1sfr!2sma"
-				width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2291.6877510442982!2d-8.765331302597149!3d31.543726042811052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdae3db0948b7a0d%3A0x27d0a82b92ff3c42!2z2LTZiti02KfZiNip!5e1!3m2!1sfr!2sma!4v1685730065379!5m2!1sfr!2sma"
+						width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>
 		</div>
@@ -151,21 +144,8 @@
 		</svg></div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<?php include('links.js') ?>
+
 
 </body>
 
