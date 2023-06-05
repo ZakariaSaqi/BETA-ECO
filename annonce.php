@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>BETA ECO - Annonce</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <?php include('links.css') ?>
-</head>
-
-<body>
-
+  <head>
+    <title>BETA ECO - Annonce</title>
+    <?php include('links.css') ?>
+  </head>
+  <body>
   <?php include('navbar.html') ?>
-  <!-- END nav -->
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg');"
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/image_4.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -298,21 +292,7 @@
 
       </div>
     </div>
-  </section> <!-- .section -->
-
-
+  </section>
   <?php include('footer.php') ?>
-
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" />
-    </svg></div>
-
-  <?php include('links.js') ?>
-
-</body>
-
+  </body>
 </html>

@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>BETA ECO - Services</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <?php include('links.css') ?>
-</head>
-
-<body>
-  <?php include('navbar.html') ?>
-  <!-- END nav -->
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg')"
+  <head>
+    <title>BETA ECO - Services</title>
+    <?php include('links.css') ?>
+  </head>
+  <body>
+    <?php include('navbar.html') ?>
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg')"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -105,158 +100,7 @@
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- <section class="ftco-section bg-light ftco-no-pt">
-      <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <span class="subheading">Price &amp; Plans</span>
-            <h2>Affordable Packages</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="block-7">
-              <div class="text-center">
-                <span class="excerpt d-block">Personal</span>
-                <span class="price"
-                  ><sup>$</sup> <span class="number">49</span>
-                  <sub>/mos</sub></span
-                >
-
-                <ul class="pricing-text mb-5">
-                  <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Online Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Branding Services
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Creative Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Sales Management
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary d-block px-2 py-3"
-                  >Get Started</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="block-7">
-              <div class="text-center">
-                <span class="excerpt d-block">Business</span>
-                <span class="price"
-                  ><sup>$</sup> <span class="number">79</span>
-                  <sub>/mos</sub></span
-                >
-
-                <ul class="pricing-text mb-5">
-                  <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Online Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Branding Services
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Creative Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Sales Management
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary d-block px-2 py-3"
-                  >Get Started</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="block-7">
-              <div class="text-center">
-                <span class="excerpt d-block">Ultimate</span>
-                <span class="price"
-                  ><sup>$</sup> <span class="number">109</span>
-                  <sub>/mos</sub></span
-                >
-
-                <ul class="pricing-text mb-5">
-                  <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Online Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Branding Services
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Creative Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Sales Management
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary d-block px-2 py-3"
-                  >Get Started</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="block-7">
-              <div class="text-center">
-                <span class="excerpt d-block">Premium</span>
-                <span class="price"
-                  ><sup>$</sup> <span class="number">149</span>
-                  <sub>/mos</sub></span
-                >
-
-                <ul class="pricing-text mb-5">
-                  <li><span class="fa fa-check mr-2"></span>Brand Strategy</li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Online Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Branding Services
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Creative Marketing
-                  </li>
-                  <li>
-                    <span class="fa fa-check mr-2"></span>Sales Management
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary d-block px-2 py-3"
-                  >Get Started</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
+  </section> 
   <?php include('footer.php') ?>
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen">
-    <svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" />
-    </svg>
-  </div>
-
-  <?php include('links.js') ?>
-
-</body>
-
+  </body>
 </html>
