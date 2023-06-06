@@ -44,7 +44,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Niveau</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Etat</th>
                         <th scope="col" style="width:50px">Opération</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@
                         <th scope="row">1</th>
                         <td>Zakaria SAKI</td>
                         <td>sakizakaria7@gmail.com</td>
-                        <td>Formation</td>
+                        <td>Active</td>
                         <td class="row">
                             <a href="operations_demande.php?action=view&id=<?= $data['id'] ?>" class="view col-4"
                                 title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-info"></i></a>

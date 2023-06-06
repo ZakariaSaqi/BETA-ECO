@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>BETA ECO - Annonces</title>
-    <?php include('links.css') ?>
-  </head>
-  <body>
-  <?php include('navbar.html') ?>
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/website/image_1.jpg');"
+
+    <section id="annonces" class="hero-wrap hero-wrap-2" style="background-image: url('../images/website/image_1.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -26,7 +19,7 @@
       <div class="row d-flex">
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_1.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_1.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -41,7 +34,7 @@
         </div>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_2.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_2.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -56,7 +49,7 @@
         </div>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_3.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_3.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -72,7 +65,7 @@
 
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_3.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_3.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -87,7 +80,7 @@
         </div>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_5.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_5.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -102,7 +95,7 @@
         </div>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_6.jpg');">
+            <a href="annonce.php" class="block-20 rounded" style="background-image: url('../images/website/image_6.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
@@ -133,6 +126,3 @@
       </div>
     </div>
   </section> 
-  <?php include('footer.php') ?>
-  </body>
-</html>

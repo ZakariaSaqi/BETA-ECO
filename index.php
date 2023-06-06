@@ -7,9 +7,10 @@
   </head>
   <body>
     <?php include('navbar.html') ?>
-    <div class="hero-wrap">
+    <div class="container-fluid">
+	<div class="hero-wrap">
 		<div class="home-slider owl-carousel">
-			<div class="slider-item" style="background-image:url(assets/images/bg_1.jpg);">
+			<div class="slider-item" style="background-image:url(images/website/bg_1.jpg);">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -24,7 +25,7 @@
 				</div>
 			</div>
 
-			<div class="slider-item" style="background-image:url(assets/images/bg_2.jpg);">
+			<div class="slider-item" style="background-image:url(images/website/bg_2.jpg);">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -39,7 +40,7 @@
 				</div>
 			</div>
 
-			<div class="slider-item" style="background-image:url(assets/images/bg_3.jpg);">
+			<div class="slider-item" style="background-image:url(images/website/bg_3.jpg);">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -54,6 +55,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
    	
     <!-- <section class="ftco-section ftco-no-pt bg-light">

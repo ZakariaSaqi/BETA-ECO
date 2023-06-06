@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>BETA ECO - A propos</title>
-	<?php include('links.css') ?>
-  </head>
-  <body>
-	<?php include('navbar.html') ?>
-	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/website/bg_3.jpg');"
+
+	<section id="about" class="hero-wrap hero-wrap-2" style="background-image: url('../images/website/bg_3.jpg');"
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
@@ -26,7 +19,7 @@
 		<div class="row d-flex no-gutters">
 			<div class="col-md-6 d-flex">
 				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-					style="background-image:url(images/website/about-3.jpg);">
+					style="background-image:url(../images/website/about-3.jpg);">
 				</div>
 			</div>
 			<div class="col-md-6 pl-md-5 py-md-5">
@@ -44,45 +37,6 @@
 		</div>
 	</div>
 </section>
-
-<section class="ftco-counter bg-light ftco-no-pt" id="section-counter">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 text-center">
-					<div class="text">
-						<strong class="number" data-number="12">0</strong>
-					</div>
-					<div class="text">
-						<span>Des années d'expérience</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 text-center">
-					<div class="text">
-						<strong class="number" data-number="85">0</strong>
-					</div>
-					<div class="text">
-						<span>Clients</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 text-center">
-					<div class="text">
-						<strong class="number" data-number="60">0</strong>
-					</div>
-					<div class="text">
-						<span>consultant expertise</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
 
 <section class="ftco-section testimony-section bg-light">
 	<div class="overlay"></div>
@@ -104,7 +58,7 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_1.jpg)">
+									<div class="user-img" style="background-image: url(../images/website/person_1.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
@@ -122,7 +76,7 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_2.jpg)">
+									<div class="user-img" style="background-image: url(../images/website/person_2.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
@@ -140,7 +94,7 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_3.jpg)">
+									<div class="user-img" style="background-image: url(../images/website/person_3.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
@@ -158,7 +112,7 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_1.jpg)">
+									<div class="user-img" style="background-image: url(../images/website/person_1.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
@@ -176,7 +130,7 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_2.jpg)">
+									<div class="user-img" style="background-image: url(../images/website/person_2.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
@@ -196,9 +150,9 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-faqs w-100">
-					<div class="img mb-4 mb-sm-0" style="background-image:url(images/website/about-2.jpg);">
+					<div class="img mb-4 mb-sm-0" style="background-image:url(../images/website/about-2.jpg);">
 					</div>
-					<div class="img img-2 mb-4 mb-sm-0" style="background-image:url(images/website/about-1.jpg);">
+					<div class="img img-2 mb-4 mb-sm-0" style="background-image:url(../images/website/about-1.jpg);">
 					</div>
 				</div>
 			</div>
@@ -334,6 +288,3 @@
 		</div>
 	</div>
 </section>
-    <?php include('footer.php') ?>
-  </body>
-</html>
