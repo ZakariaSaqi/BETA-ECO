@@ -1,0 +1,54 @@
+.table thead {
+    color: white;
+    background-color: #5D87FF;
+}
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+}
+
+.search input {
+
+    height: 40px;
+    text-indent: 25px;
+    border: 1px solid #5D87FF;
+
+
+}
+
+.search input:focus {
+
+    box-shadow: none;
+    border: 1px solid #5D87FF;
+
+
+}
+
+.search button {
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    background: #5D87FF;
+
+}
+.btn-light , i, p{
+    border-radius: 0;
+    color: #2A3547;
+    display: flex;
+    align-items: center;
+}
+#comments tbody tr th h3{
+    font-size: 15px;
+    font-weight: 700;
+}
+#comments tbody tr th h3 span{
+    font-size: 12px;
+}
+#comments tbody tr th p{
+    font-size: 12px;
+}

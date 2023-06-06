@@ -4,6 +4,8 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap');
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -31,8 +33,8 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  --font-family-sans-serif: "Plus Jakarta Sans",sans-serif;
+  --font-family-monospace: "Plus Jakarta Sans",sans-serif;}
 
 *,
 *::before,
@@ -51,7 +53,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:"Plus Jakarta Sans",sans-serif ;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -7995,7 +7997,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Plus Jakarta Sans",sans-serif;
   background: #fff;
   font-size: 15px;
   line-height: 1.8;
@@ -8294,7 +8296,7 @@ h1, h2, h3, h4, h5,
   .hero-wrap .slider-text h1 {
     color: #fff;
     line-height: 1.2;
-    font-family: "Montserrat", Arial, sans-serif; }
+    font-family:"Plus Jakarta Sans",sans-serif; }
     @media (max-width: 991.98px) {
       .hero-wrap .slider-text h1 {
         font-size: 40px; } }
@@ -8304,7 +8306,7 @@ h1, h2, h3, h4, h5,
     font-size: 15px;
     color: #5D87FF;
     text-transform: uppercase;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family:"Plus Jakarta Sans",sans-serif;
     font-weight: 700;
     letter-spacing: 2px; }
   .hero-wrap .slider-text p {
@@ -8411,7 +8413,7 @@ h1, h2, h3, h4, h5,
           font-size: 16px;
           text-transform: uppercase;
           letter-spacing: 2px;
-          font-family: "Montserrat", Arial, sans-serif;
+          font-family:"Plus Jakarta Sans",sans-serif;
           font-weight: 600;
           color: #5D87FF;
           display: inline-block;
