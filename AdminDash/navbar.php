@@ -2,8 +2,8 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="../index.php" class="text-nowrap logo-img">
-            <img src="../assets/images/iconTxt.svg" width="140" alt="" />
+          <a href="../index.php" class="text-nowrap logo-img pt-4 px-4">
+            <img src="../assets/images/iconText.png" width="140" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -126,7 +126,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+              <a class="nav-link nav-icon-hover" href="conversation.php">
                 <i class="fa-solid fa-message"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
@@ -141,7 +141,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="profil.php" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">My Account</p>
                     </a>

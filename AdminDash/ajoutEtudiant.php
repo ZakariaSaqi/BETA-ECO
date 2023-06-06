@@ -1,16 +1,10 @@
 <html lang="en">
 
 <head>
-    <title>Admin - Ajouter séance</title>
+    <title>Admin - Cours</title>
     <?php include('links.html') ?>
 </head>
-<style>
-    .form-control, .form-select{
-        border-radius: 5px;
-        height: 35px;
-        border-color:#5D87FF ;
-    }
-</style>
+
 <body>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -20,40 +14,59 @@
 
                 <div class="row">
                     <div class="col-md-12 nav-small-cap">
-                        <h4>Séances / Ajouter </h4>
+                        <h4>étudiant profil</h4>
                     </div>
                 </div>
-                <form action="" method="post">
+
                 <div class="row gutters-sm">
                     <div class="col-md-6 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Date</h6>
+                                        <h6 class="mb-0">Prénom</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="date" name="" id="" class="form-control">
+                                       <input type="text" class="form-control" name="" id="">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Heure début</h6>
+                                        <h6 class="mb-0">Nom</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="datetime" name="" id="" class="form-control">
+                                    <input type="text" class="form-control" name="" id="">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Heure fin</h6>
+                                        <h6 class="mb-0">Phone</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="datetime" name="" id="" class="form-control">
+                                       <input type="text" class="form-control" name="" id="">
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" name="" id="">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                    <h6 class="mb-0">Adresse</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" name="" id="">
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
                         </div>
                     </div>
@@ -61,7 +74,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                <div class="col-sm-3">
                                         <h6 class="mb-0">Niveau</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
@@ -78,27 +91,40 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Type</h6>
+                                        <h6 class="mb-0">Login</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <select name="" class="form-select  mb-3">
-                                        <option value="" selected>Choisir</option>
-                                            <option value="">Cours</option>
-                                            <option value="">TP</option>
-                                            <option value="">TD</option>
-                                        </select>
+                                    <input type="text" class="form-control" name="" id="">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Mots de passe</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" name="" id="">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Confirmation</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" name="" id="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-sm-6">
-                                <button class="btn btn-info"> Ajouter</button>
-                            </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-info " target="__blank" href="modifier.php">Ajouter</a>
                         </div>
                     </div>
+                    </div>
                 </div>
-                </form>
+
             </div>
         </div>
     </div>

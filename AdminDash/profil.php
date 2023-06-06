@@ -112,7 +112,7 @@
                         </div>
                         <div class="row mb-3">
                         <div class="col-sm-6">
-                            <a class="btn btn-info " target="__blank" href="modifier.php">Message</a>
+                            <a class="btn btn-info " href="modifierProfil.php">Modifier</a>
                         </div>
                     </div>
                     </div>

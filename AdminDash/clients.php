@@ -29,13 +29,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="3">
+                        <!-- <th scope="col" colspan="3">
                         <button class="btn btn-light py-2 px-4">
                             <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
                             <p class="text-uppercase m-0">Ajouter une nouveau annonce</p>
                         </button>
-                        </th>
-                        <th scope="col" colspan="2">
+                        </th> -->
+                        <th scope="col" colspan="5">
                         <button class="btn btn-light py-2 px-4">
                             <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
                             <p class="text-uppercase m-0">Exporter au format PDF</p>

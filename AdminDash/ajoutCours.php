@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin - Ajouter séance</title>
+    <title>Admin - Ajouter cours</title>
     <?php include('links.html') ?>
 </head>
 <style>
@@ -20,46 +20,41 @@
 
                 <div class="row">
                     <div class="col-md-12 nav-small-cap">
-                        <h4>Séances / Ajouter </h4>
+                        <h4>Cours / Ajouter </h4>
                     </div>
                 </div>
                 <form action="" method="post">
                 <div class="row gutters-sm">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Date</h6>
+                                        <h6 class="mb-0">Titre</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="date" name="" id="" class="form-control">
+                                        <input type="text" name="" id="" class="form-control">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Heure début</h6>
+                                        <h6 class="mb-0">Description</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="datetime" name="" id="" class="form-control">
+                                        <textarea name="description" class="form-control" id="" cols="30" rows="10" style="height:10rem"></textarea>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Heure fin</h6>
+                                        <h6 class="mb-0">Cours</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="datetime" name="" id="" class="form-control">
+                                    <input type="file" name="" id="" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Niveau</h6>
@@ -75,22 +70,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Type</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <select name="" class="form-select  mb-3">
-                                        <option value="" selected>Choisir</option>
-                                            <option value="">Cours</option>
-                                            <option value="">TP</option>
-                                            <option value="">TD</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <div class="col-sm-6">
                                 <button class="btn btn-info"> Ajouter</button>

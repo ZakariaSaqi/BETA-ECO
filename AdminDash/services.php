@@ -31,10 +31,10 @@
                 <thead>
                     <tr>
                         <th scope="col" colspan="2">
-                        <button class="btn btn-light py-2 px-4">
+                        <a href="ajoutService.php" class="btn btn-light py-2 px-4"  style="width:max-content">
                             <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
                             <p class="text-uppercase m-0">Ajouter un nouveau service</p>
-                        </button>
+                        </a >
                         </th>
                         <th scope="col" colspan="2">
                         <button class="btn btn-light py-2 px-4">
