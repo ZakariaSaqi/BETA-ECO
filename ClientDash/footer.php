@@ -1,21 +1,4 @@
-<section class="ftco-section ftco-no-pb ftco-no-pt bg-secondary">
-		<div class="container py-5">
-			<div class="row">
-				<div class="col-md-10 d-flex align-items-center">
-					<h2 class="mb-3 mb-sm-0" style="color: white; font-size: 22px">
-						Inscrivez-vous pour votre première consultation comptable gratuite
-					</h2>
-				</div>
-				<div class="col-md-2 d-flex align-items-center">
-					<form action="#" class="subscribe-form">
-						<div class="form-group ">
-						<a href="" target="_blank" class="btn btn-primary">S'inscrir</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>    
+  
   <footer class="footer ">
 		<div class="container-fluid px-lg-5">
 			<div class="row">
@@ -23,7 +6,7 @@
 					<div class="row">
 						<div class="col-md-4 mb-md-0 mb-4">
 							<div class="row d-flex justify-content-center">
-								<img src="../assets/images/website/iconWhite.svg" class="m-2" alt="" srcset="" style="width:5rem">
+								<img src="../images/website/iconWhite.svg" class="m-2" alt="" srcset="" style="width:5rem">
 							</div>
 							<p style="color:white;">BETA ECO : comptabilité durable, conseils éco-responsables pour une gestion financière
 								respectueuse de l'environnement. Durabilité et croissance responsable.</p>

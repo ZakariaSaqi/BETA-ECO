@@ -1,5 +1,4 @@
-
-	<section id="about" class="hero-wrap hero-wrap-2" style="background-image: url('../images/website/bg_3.jpg');"
+<section id="about" class="hero-wrap hero-wrap-2" style="background-image: url('../images/website/bg_3.jpg');"
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
@@ -44,7 +43,10 @@
 		<div class="row justify-content-center pb-5 mb-3">
 			<div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
 				<span class="subheading">Témoignages</span>
-				<h2>Clients satisfaits</h2>
+				<h2>
+				Exprimer à votre satisfaction <br> 
+				<a href="feedback.php"><i class="fa-regular fa-square-plus" style="color:#2A3547"></i></a>
+				</h2>
 			</div>
 		</div>
 		<div class="row ftco-animate">
@@ -58,8 +60,6 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(../images/website/person_1.jpg)">
-									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
 										<span class="position">Directeur Marketing</span>
@@ -76,8 +76,6 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(../images/website/person_2.jpg)">
-									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
 										<span class="position">Directeur Marketing</span>
@@ -94,8 +92,6 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(../images/website/person_3.jpg)">
-									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
 										<span class="position">Directeur Marketing</span>
@@ -112,8 +108,6 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(../images/website/person_1.jpg)">
-									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>
 										<span class="position">Directeur Marketing</span>
@@ -130,7 +124,6 @@
 								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
 									Vokalia et Consonantia, vivent les textes aveugles.</p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(../images/website/person_2.jpg)">
 									</div>
 									<div class="pl-3">
 										<p class="name">Roger Scott</p>

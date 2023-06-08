@@ -21,9 +21,9 @@
             <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="#annonces" class="nav-link">Annonces</a></li>
             <!-- <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li> -->
-            <li class="nav-item"><a href="contact.php" class="nav-link"><i class="fa-solid fa-bell"></i></a></li>
-            <li class="nav-item"><a href="contact.php" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
-            <li class="nav-item"><a href="contact.php" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+            <li class="nav-item"><a href="" class="nav-link"><i class="fa-solid fa-bell"></i></a></li>
+            <li class="nav-item"><a href="#profil" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
+            <li class="nav-item"><a href="logout.php" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
           </div>
              

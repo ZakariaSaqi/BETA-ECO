@@ -1,8 +1,12 @@
+<?php
+if(!isset($_SESSION['id'])){
+  header('location:../login.php');
+}else{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>BETA ECO - Accueil</title>
-	<link rel="stylesheet" href="../images/iconWhite.svg">
 	<?php include('links.css')  ;?>
   </head>
   <body>
@@ -11,9 +15,11 @@
     include('about.php');
     include('services.php');
     include('annonces.php');
+    include('profil.php');
     include('footer.php');
      ?>
 
 	
   </body>
 </html>
+<?php } ?>
