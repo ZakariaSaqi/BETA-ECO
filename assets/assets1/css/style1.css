@@ -36,19 +36,54 @@
     background: #5D87FF;
 
 }
-.btn-light , i, p{
+
+.btn-light,
+i,
+p {
     border-radius: 0;
     color: #2A3547;
     display: flex;
     align-items: center;
 }
-#comments tbody tr th h3{
+
+#comments tbody tr th h3 {
     font-size: 15px;
     font-weight: 700;
 }
-#comments tbody tr th h3 span{
+
+#comments tbody tr th h3 span {
     font-size: 12px;
 }
-#comments tbody tr th p{
+
+#comments tbody tr th p {
     font-size: 12px;
+}
+
+table thead tr th .form-select {
+    color: white;
+    border: none;
+    font-weight: 900;
+    width: 150px;
+}
+
+.form-select option,
+.form-select option:hover {
+    color: #5D87FF;
+    background-color: #fff;
+    padding-right: 5px;
+}
+
+.no-styles {
+    all: unset;
+}
+
+#pagination a {
+    color: white;
+}
+
+.pagination .active {
+    z-index: 3;
+    color: #fff;
+    background-color: #2A3547;
+    border: none;
 }

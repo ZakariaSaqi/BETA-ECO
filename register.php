@@ -56,8 +56,10 @@ require_once('connexion.php');
                     </div>
                   </div>
                 </form>
-                <?php if (isset($_GET['btn'])) {
+                <?php
+                 if (isset($_GET['btn'])) {
                   $type = $_GET['type'];
+                  if ($type == "Etudiants") {
                   if (isset($_POST['btn'])) {
                     if ($_POST['psw'] == $_POST['cpsw']) {
                     $phoneRegex = "/^\+212[5-7]\d{8}$/";
@@ -73,7 +75,8 @@ require_once('connexion.php');
                     } else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
                   } else echo "<center>Mots de passe pas correspondant !";
                 }
-                  if ($type == "Etudiants") { ?>
+                    
+                    ?>
                     <form method="post">
                       <hr>
                       <div class="row">
@@ -98,7 +101,7 @@ require_once('connexion.php');
                               aria-describedby="textHelp">
                           </div>
                           <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Address</label>
+                            <label for="exampleInputEmail1" class="form-label">Addresse</label>
                             <input type="text" class="form-control" name="adresse" id="exampleInputEmail1"
                               aria-describedby="">
                           </div>
@@ -109,7 +112,7 @@ require_once('connexion.php');
                             <label for="exampleInputEmail1" class="form-label">Niveau</label>
                             <div class="col-sm-10 text-secondary">
                               <select name="niveau" class="form-select  mb-3">
-                                <option value="" selected>Choisir</option>
+                                <option value="" selected disabled>Choisir</option>
                                 <option value="PME 2">PME 2</option>
                                 <option value="PME 1">PME 1</option>
                                 <option value="ENCG">ENCG</option>
@@ -124,11 +127,11 @@ require_once('connexion.php');
                               aria-describedby="emailHelp" required>
                           </div>
                           <div class="mb-4">
-                            <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                            <label for="exampleInputPassword1" class="form-label">Mots de passe</label>
                             <input type="password" class="form-control" name="psw" id="exampleInputPassword1" required>
                           </div>
                           <div class="mb-4">
-                            <label for="exampleInputPassword1" class="form-label">Confirmation du mot de passe</label>
+                            <label for="exampleInputPassword1" class="form-label">Confirmation du mots de passe</label>
                             <input type="password" class="form-control" name="cpsw" id="exampleInputPassword1" required>
                           </div>
                         </div>
@@ -190,10 +193,10 @@ require_once('connexion.php');
                               <label for="exampleInputEmail1" class="form-label" required>Services</label>
                               <div class="col-sm-10 text-secondary">
                                 <select name="srv" class="form-select  mb-3">
-                                  <option value="" selected>Choisir</option>
-                                  <option value="">CNCS</option>
-                                  <option value="">Consultation</option>
-                                  <option value="">Formation</option>
+                                  <option value="" selected disabled>Choisir</option>
+                                  <option value="CNCS">CNCS</option>
+                                  <option value="Consultation">Consultation</option>
+                                  <option value="Formation">Formation</option>
                                 </select>
                               </div>
                             </div>
@@ -203,11 +206,11 @@ require_once('connexion.php');
                                 aria-describedby="emailHelp" required>
                             </div>
                             <div class="mb-4">
-                              <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                              <label for="exampleInputPassword1" class="form-label">Mots de passe</label>
                               <input type="password" class="form-control" name="psw" id="exampleInputPassword1" required>
                             </div>
                             <div class="mb-4">
-                              <label for="exampleInputPassword1" class="form-label">Confirmation du mot de passe</label>
+                              <label for="exampleInputPassword1" class="form-label">Confirmation du mots de passe</label>
                               <input type="password" class="form-control" name="cpsw" id="exampleInputPassword1" required>
                             </div>
                           </div>

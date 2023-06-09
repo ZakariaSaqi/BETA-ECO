@@ -1,5 +1,11 @@
-<html lang="en">
-
+<?php
+session_start();
+if(!isset($_SESSION['ide'])){
+  header('location:../login.php');
+}else{
+  require_once('../connexion.php');
+  ?>
+  <html lang="en">
 <head>
     <title>Admin - Séances</title>
     <?php include('links.html') ?>
@@ -30,22 +36,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">
-                            <a href="ajoutSeance.php" class="btn btn-light py-2 px-4" style="width:max-content">
-                                <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
-                                <p class="text-uppercase m-0">Ajouter une nouvelle séances</p>
-                            </a>
-                        </th>
-                        <th scope="col" colspan="2">
-                            <!-- <button class="btn btn-light py-2 px-4">
-                            <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
-                            <p class="text-uppercase m-0">Exporter au format PDF</p>
-                        </button> -->
-                        </th>
-                    </tr>
-                    <tr>
-                        <th scope="col">N°</th>
-                        <th scope="col">Niveau</th>
                         <th scope="col">Date</th>
                         <th scope="col">Heure debut</th>
                         <th scope="col">Heure fin</th>
@@ -55,16 +45,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>PME</td>
                         <td>11-6-2023</td>
                         <td>18:00</td>
                         <td>20:00</td>
                         <td>Cours</td>
                         <td class="row">
-                            <a href="operations_demande.php?action=view&id=<?= $data['id'] ?>" class="view col-4"
-                                title="View" data-toggle="tooltip"><i class="fa-solid fa-ban"></i></a>
-                            <i class="fa-solid fa-check"></i>
                             <i class="fa-sharp fa-solid fa-clock"></i>
                         </td>
                     </tr>
@@ -76,5 +61,5 @@
     </div>
     </div>
 </body>
-
 </html>
+<?php } ?>

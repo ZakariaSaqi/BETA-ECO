@@ -45,22 +45,22 @@ require_once('connexion.php');
                   if($res -> rowCount() > 0){
                     if($row['type'] == 1){
                       session_start();
-                      $_SESSION['id'] = $row['id_user'];
-                      header('location:AdminDash/index.php');
+                      $_SESSION['idd'] = $row['id_user'];
+                      header('location:DirectorDash/index.php');
                     }
                     if($row['type'] == 2){
                       session_start();
-                      $_SESSION['id'] = $row['id_user'];
+                      $_SESSION['ida'] = $row['id_user'];
                       header('location:AssistanteDash/index.php');
                     }
                     if($row['type'] == 3){
                       session_start();
-                      $_SESSION['id'] = $row['id_user'];
+                      $_SESSION['idc'] = $row['id_user'];
                       header('location:ClientDash/index.php');
                     }
                     if($row['type'] == 4){
                       session_start();
-                      $_SESSION['id'] = $row['id_user'];
+                      $_SESSION['ide'] = $row['id_user'];
                       header('location:EtudiantDash/index.php');
                     }
                   } else echo "<p class='text-center' style='color:red'>Nom d'utilisateur ou mots de passe est incorrecte !</p>";
