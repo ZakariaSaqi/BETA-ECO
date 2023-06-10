@@ -67,8 +67,8 @@ require_once('connexion.php');
                       // hadi ktverfier wesh domain kyn olala
                       list(, $domain) = explode('@', $_POST['email']);
                       if (checkdnsrr($domain, 'MX')) {
-                          $req = "insert into utilisateurs (type ,prenom, nom, phone, email, adresse, niveau, login, psw)
-                      values (4,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
+                          $req = "insert into utilisateurs (type, etat,prenom, nom, phone, email, adresse, niveau, login, psw)
+                      values (4, 1,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
                           $res = $pdo->query($req);
                           header('location:login.php');
                       }  else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";

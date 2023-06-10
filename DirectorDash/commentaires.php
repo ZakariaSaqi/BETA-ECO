@@ -1,135 +1,151 @@
 <?php
 session_start();
-if(!isset($_SESSION['idd'])){
-  header('location:../login.php');
-}else{
-  require_once('../connexion.php');
-  ?>
-  <html lang="en">
-<head>
-    <title>Admin - Commentaires</title>
-    <?php include('links.html') ?>
-</head>
-<body>
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <?php include('navbar.php') ?>
-        <div class="container-fluid">
-            <div class="container">
+if (!isset($_SESSION['idd'])) {
+    header('location:../login.php');
+} else {
+    require_once('../connexion.php');
+    $req = "select u.nom, u.prenom , c.*, an.titre from commentaire c, annonce an, utilisateurs u 
+    where c.id_user=u.id_user and c.id_annonce=an.id_annonce";
+    $search = '';
+    if (isset($_GET['search-btn'])) {
+        $search = trim($_GET['search']);
+        $req .= " AND ( date_comment LIKE '%$search%' OR contenu LIKE '%$search%' )";
+    }
+    $resultsPerPage = 3;
+    $totalResults = $pdo->query($req)->rowCount();
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+    $startIndex = ($currentPage - 1) * $resultsPerPage;
+    ?>
+    <html lang="en">
 
-                <div class="row mb-2 d-flex align-items-center ">
-                    <div class="col-md-6 nav-small-cap">
-                        <h4>Derniers Commentaires</h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" class="form-control ps-0" placeholder="Date, Mot ...">
-                            <button class="btn btn-primary"><i class="fa fa-search" style="color:white"></i></button>
+    <head>
+        <title>Admin - Commentaires</title>
+        <?php include('links.html') ?>
+    </head>
+
+    <body>
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+            data-sidebar-position="fixed" data-header-position="fixed">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <div class="container">
+                    <form action="commentaires.php" class="no-styles" method="get">
+                        <div class="row mb-2 d-flex align-items-center ">
+                            <div class="col-md-6 nav-small-cap">
+                                <h4>Derniers Commentaires</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="search">
+                                    <input type="text" name="search" class="form-control ps-0" placeholder="Date, Mot ..."
+                                        value="<?= htmlspecialchars($search) ?>">
+                                    <button class="btn btn-primary" name="search-btn"><i class="fa fa-search"
+                                            style="color:white"></i></button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
+                <table class="table" id="Comments">
+                    <thead>
+                        <tr>
+                            <th scope="col">Commentaires</th>
+                            <th scope="col" style="width:50px">Opération</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $req .= " ORDER BY id_annonce DESC LIMIT $startIndex, $resultsPerPage";
+                        $res = $pdo->query($req);
+                        if ($res->rowCount() > 0) {
+                            foreach ($res as $data) {
+                                ?>
+                                <tr>
+                                    <th scope="row container">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-1 d-flex ">
+                                                <i class="fa-solid fa-user px-3" style="font-size:20px"></i>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h3>
+                                                    <?= $data['prenom'] . " " . $data['nom'] ?><span class="ms-1"> a répondu à l'annonce 
+                                                        " <?= $data['titre'] ?>"
+                                                    </span>
+                                                </h3>
+                                                <p>
+                                                    <?php
+
+                                                    // Assuming $row3['date_demande'] contains the date from the database
+                                                    $date = strtotime($data['date_comment']);
+                                                    $currentDate = time();
+                                                    $secondsDiff = $currentDate - $date;
+
+                                                    // Calculate the time difference in days
+                                                    $daysDiff = floor($secondsDiff / (60 * 60 * 24));
+
+                                                    if ($daysDiff == 0) {
+                                                        // Output the formatted string
+                                                        echo "Aujourd'hui.";
+                                                    } else if ($daysDiff == 1) {
+                                                        // Output the formatted string
+                                                        echo "Hier.";
+                                                    } else {
+                                                        // Output the formatted string
+                                                        echo $daysDiff . " jours.";
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p>
+                                                <?= $data['contenu'] ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="row">
+                                        <a href="operations_demande.php?action=view&id=" class="view col-4"
+                                            title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-check"></i></a>
+                                        <a href="operations_demande.php?action=Edit&id=" class="edit col-4"
+                                            title="Edit" data-toggle="tooltip"><i class="fa-solid fa-reply"></i></a>
+                                        <a href="operations_demande.php?action=Delete&id=" class="delete col-4"
+                                            title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
+
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="6"> Aucune commentaire !</td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <?php
+                    for ($page = 1; $page <= $totalPages; $page++) {
+                        $params = $_GET;
+                        $params['page'] = $page;
+                        $queryString = http_build_query($params);
+                        echo '<a class="btn btn-primary mx-1';
+                        if ($page === $currentPage) {
+                            echo ' active';
+                        }
+                        echo '" style="color:white" href="commentaires.php?' . $queryString . '">' . $page . '</a>';
+                    }
+                    ?>
+                </div>
+
             </div>
-
-
-            <table class="table" id="Comments">
-                <thead>
-                    <tr>
-                        <th scope="col">Commentaires</th>
-                        <th scope="col" style="width:50px">Opération</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row container">
-                            <div class="row align-items-center">
-                                <div class="col-md-1 d-flex ">
-                                <i class="fa-solid fa-user p-3" style="font-size:20px"></i>
-                                </div>
-                                <div class="col-md-8">
-                                    <h3>Zakaria SAKI  <span class="ms-1"> repondre au annoce1</span> </h3>
-                                    <p>Aujourd'hui</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore voluptatibus animi quaerat incidunt mollitia rem consectetur voluptas?</p>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="row">
-                            <a href="operations_demande.php?action=view&id=<?= $data['id'] ?>" class="view col-4"
-                                title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-check"></i></a>
-                            <a href="operations_demande.php?action=Edit&id=<?= $data['id'] ?>" class="edit col-4"
-                                title="Edit" data-toggle="tooltip"><i class="fa-solid fa-reply"></i></a>
-                            <a href="operations_demande.php?action=Delete&id=<?= $data['id'] ?>" class="delete col-4"
-                                title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row container">
-                            <div class="row align-items-center">
-                                <div class="col-md-1 d-flex ">
-                                <i class="fa-solid fa-user p-3" style="font-size:20px"></i>
-                                </div>
-                                <div class="col-md-8">
-                                    <h3>Zakaria SAKI  <span class="ms-1"> repondre au annoce1</span> </h3>
-                                    <p>Aujourd'hui</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore voluptatibus animi quaerat incidunt mollitia rem consectetur voluptas?</p>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="row">
-                            <a href="operations_demande.php?action=view&id=<?= $data['id'] ?>" class="view col-4"
-                                title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-check"></i></a>
-                            <a href="operations_demande.php?action=Edit&id=<?= $data['id'] ?>" class="edit col-4"
-                                title="Edit" data-toggle="tooltip"><i class="fa-solid fa-reply"></i></a>
-                            <a href="operations_demande.php?action=Delete&id=<?= $data['id'] ?>" class="delete col-4"
-                                title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row container">
-                            <div class="row align-items-center">
-                                <div class="col-md-1 d-flex ">
-                                <i class="fa-solid fa-user p-3" style="font-size:20px"></i>
-                                </div>
-                                <div class="col-md-8">
-                                    <h3>Zakaria SAKI  <span class="ms-1"> repondre au annoce1</span> </h3>
-                                    <p>Aujourd'hui</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore voluptatibus animi quaerat incidunt mollitia rem consectetur voluptas?</p>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="row">
-                            <a href="operations_demande.php?action=view&id=<?= $data['id'] ?>" class="view col-4"
-                                title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-check"></i></a>
-                            <a href="operations_demande.php?action=Edit&id=<?= $data['id'] ?>" class="edit col-4"
-                                title="Edit" data-toggle="tooltip"><i class="fa-solid fa-reply"></i></a>
-                            <a href="operations_demande.php?action=Delete&id=<?= $data['id'] ?>" class="delete col-4"
-                                title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
-
-                        </td>
-                    </tr>
-                    
-                
-                </tbody>
-            </table>
-
-
         </div>
-    </div>
-    </div>
-</body>
-</html>
+        </div>
+    </body>
+
+    </html>
 <?php } ?>

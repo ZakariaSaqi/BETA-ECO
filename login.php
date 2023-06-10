@@ -48,7 +48,7 @@ require_once('connexion.php');
                       $_SESSION['idd'] = $row['id_user'];
                       header('location:DirectorDash/index.php');
                     }
-                    if($row['type'] == 2){
+                    if($row['type'] == 2 && $row['acces'] == 1  ){
                       session_start();
                       $_SESSION['ida'] = $row['id_user'];
                       header('location:AssistanteDash/index.php');
@@ -58,7 +58,7 @@ require_once('connexion.php');
                       $_SESSION['idc'] = $row['id_user'];
                       header('location:ClientDash/index.php');
                     }
-                    if($row['type'] == 4){
+                    if($row['type'] == 4 && $row['etat'] == 1){
                       session_start();
                       $_SESSION['ide'] = $row['id_user'];
                       header('location:EtudiantDash/index.php');

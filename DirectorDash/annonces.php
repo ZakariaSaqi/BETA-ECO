@@ -5,15 +5,15 @@ if (!isset($_SESSION['idd'])) {
 } else {
     require_once('../connexion.php');
     $req = "select * from annonce ";
-    // Pagination variables
-    $resultsPerPage = 3; // Number of results per page
-    $totalResults = $pdo->query($req)->rowCount(); // Total number of results
-    $totalPages = ceil($totalResults / $resultsPerPage); // Total number of pages
-
-    // Get current page from query string
+    $search = '';
+    if (isset($_GET['search-btn'])) {
+        $search = trim($_GET['search']);
+        $req .= " WHERE id_annonce = '$search' OR titre LIKE '%$search%' OR description LIKE '%$search%' ";
+    }
+    $resultsPerPage = 4;
+    $totalResults = $pdo->query($req)->rowCount();
+    $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
-
-    // Calculate the starting index for the results based on current page
     $startIndex = ($currentPage - 1) * $resultsPerPage;
     ?>
 
@@ -30,14 +30,7 @@ if (!isset($_SESSION['idd'])) {
             <?php include('navbar.php') ?>
             <div class="container-fluid">
                 <div class="container">
-                    <?php
-                    $search = '';
-                    if (isset($_GET['search-btn'])) {
-                        $search = trim($_GET['search']);
-                        $req .= " WHERE id_annonce = '$search' OR titre LIKE '%$search%' OR description LIKE '%$search%' ";
-                    }
-                    ?>
-                    <form action="" class="no-styles" method="get">
+                    <form action="annonces.php" class="no-styles" method="get">
                         <div class="row mb-2 d-flex align-items-center ">
                             <div class="col-md-6 nav-small-cap">
                                 <h4>Gestion des annonces</h4>
@@ -45,13 +38,15 @@ if (!isset($_SESSION['idd'])) {
                             <div class="col-md-6">
                                 <div class="search">
                                     <input type="text" name="search" class="form-control ps-0"
-                                        placeholder="ID, Titres, Description, Date ...">
+                                        placeholder="ID, Titres, Description, Date ..."
+                                        value="<?= htmlspecialchars($search) ?>">
                                     <button class="btn btn-primary" name="search-btn"><i class="fa fa-search"
                                             style="color:white"></i></button>
                                 </div>
                             </div>
                         </div>
                     </form>
+
                 </div>
 
 
@@ -102,13 +97,12 @@ if (!isset($_SESSION['idd'])) {
                                         <?= $data['date_annonce'] ?>
                                     </td>
                                     <td class="row">
-                                        <a href="operations_demande.php?action=view&id=" class="view col-4" title="View"
-                                            data-toggle="tooltip"><i class="fa-solid fa-circle-info"></i></a>
-                                        <a href="operations_demande.php?action=Edit&id=" class="edit col-4" title="Edit"
-                                            data-toggle="tooltip"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="operations_demande.php?action=Delete&id=" class="delete col-4" title="Delete"
-                                            data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
-
+                                        <a href="operaAnnonce.php?action=view&id=<?= $data['id_annonce'] ?>" class="view col-4"
+                                            title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a href="operaAnnonce.php?action=update&id=<?= $data['id_annonce'] ?>" class="edit col-4"
+                                            title="Edit" data-toggle="tooltip"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="operaAnnonce.php?action=delete&id=<?= $data['id_annonce'] ?>" class="edit col-4"
+                                            title="Supprimer" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -126,14 +120,18 @@ if (!isset($_SESSION['idd'])) {
                 <div class="pagination">
                     <?php
                     for ($page = 1; $page <= $totalPages; $page++) {
+                        $params = $_GET;
+                        $params['page'] = $page;
+                        $queryString = http_build_query($params);
                         echo '<a class="btn btn-primary mx-1';
                         if ($page === $currentPage) {
                             echo ' active';
                         }
-                        echo '" style="color:white" href="annonces.php?page=' . $page . '">' . $page . '</a>';
+                        echo '" style="color:white" href="annonces.php?' . $queryString . '">' . $page . '</a>';
                     }
                     ?>
                 </div>
+
             </div>
         </div>
     </body>
