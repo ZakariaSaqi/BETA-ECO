@@ -1,5 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['ida'])){
+  header('location:../login.php');
+}else{
+  require_once('../connexion.php');
+  ?>
 <html lang="en">
-
 <head>
     <title>Admin - Annonces</title>
     <?php include('links.html') ?>
@@ -117,5 +123,5 @@ margin-top: -.75rem;
     </div>
     </div>
 </body>
-
 </html>
+<?php } ?>

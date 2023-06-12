@@ -1,3 +1,6 @@
+<?php
+require_once('connexion.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,7 +64,13 @@
 			<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
 				<div class="block-18 text-center">
 					<div class="text">
-						<strong class="number" data-number="85">0</strong>
+					<?php
+							$reqC = "SELECT COUNT(*) as num from utilisateurs where type = 3";
+							$resC = $pdo -> query($reqC);
+							$rowC = $resC -> fetch(PDO :: FETCH_ASSOC);
+							?>
+						<strong class="number" data-number="<?= $rowC['num'] ?>">
+						</strong>
 					</div>
 					<div class="text">
 						<span>Clients</span>
@@ -82,8 +91,6 @@
 	</div>
 </section>
 
-
-
 <section class="ftco-section testimony-section bg-light">
 	<div class="overlay"></div>
 	<div class="container">
@@ -96,96 +103,30 @@
 		<div class="row ftco-animate">
 			<div class="col-md-12">
 				<div class="carousel-testimony owl-carousel ftco-owl">
+				<?php 
+					$reqf ="select u.prenom, u.nom, f.contenu from feedback f, utilisateurs u where f.id_user = u.id_user where f.etat=1";
+					$resf = $pdo -> query($reqf);
+					foreach($resf as $dataf){ 
+					?>
 					<div class="item">
 						<div class="testimony-wrap py-4">
 							<div class="icon d-flex align-items-center justify-content-center"><span
 									class="fa fa-quote-left"></span></div>
 							<div class="text">
-								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
-									Vokalia et Consonantia, vivent les textes aveugles.</p>
+								<p class="mb-4"><?= $dataf['contenu'] ?> </p>
 								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_1.jpg)">
-									</div>
 									<div class="pl-3">
-										<p class="name">Roger Scott</p>
+										<p class="name"><?= $dataf['prenom'] ." ".$dataf['nom'] ?> </p>
 										<span class="position">Directeur Marketing</span>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4">
-							<div class="icon d-flex align-items-center justify-content-center"><span
-									class="fa fa-quote-left"></span></div>
-							<div class="text">
-								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
-									Vokalia et Consonantia, vivent les textes aveugles.</p>
-								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_2.jpg)">
-									</div>
-									<div class="pl-3">
-										<p class="name">Roger Scott</p>
-										<span class="position">Directeur Marketing</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4">
-							<div class="icon d-flex align-items-center justify-content-center"><span
-									class="fa fa-quote-left"></span></div>
-							<div class="text">
-								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
-									Vokalia et Consonantia, vivent les textes aveugles.</p>
-								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_3.jpg)">
-									</div>
-									<div class="pl-3">
-										<p class="name">Roger Scott</p>
-										<span class="position">Directeur Marketing</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4">
-							<div class="icon d-flex align-items-center justify-content-center"><span
-									class="fa fa-quote-left"></span></div>
-							<div class="text">
-								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
-									Vokalia et Consonantia, vivent les textes aveugles.</p>
-								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_1.jpg)">
-									</div>
-									<div class="pl-3">
-										<p class="name">Roger Scott</p>
-										<span class="position">Directeur Marketing</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimony-wrap py-4">
-							<div class="icon d-flex align-items-center justify-content-center"><span
-									class="fa fa-quote-left"></span></div>
-							<div class="text">
-								<p class="mb-4">Loin, très loin, derrière les montagnes de mots, loin des pays
-									Vokalia et Consonantia, vivent les textes aveugles.</p>
-								<div class="d-flex align-items-center">
-									<div class="user-img" style="background-image: url(images/website/person_2.jpg)">
-									</div>
-									<div class="pl-3">
-										<p class="name">Roger Scott</p>
-										<span class="position">Directeur Marketing</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php 
+					}
+					 ?>
+
 				</div>
 			</div>
 		</div>

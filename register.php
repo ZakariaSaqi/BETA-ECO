@@ -67,8 +67,8 @@ require_once('connexion.php');
                       // hadi ktverfier wesh domain kyn olala
                       list(, $domain) = explode('@', $_POST['email']);
                       if (checkdnsrr($domain, 'MX')) {
-                          $req = "insert into utilisateurs (type, etat,prenom, nom, phone, email, adresse, niveau, login, psw)
-                      values (4, 1,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
+                          $req = "insert into utilisateurs (type, date_inscription, etat,prenom,  nom, phone, email, adresse, niveau, login, psw)
+                      values (4,'".date("Y-m-d")."' ,  1,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
                           $res = $pdo->query($req);
                           header('location:login.php');
                       }  else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
@@ -93,7 +93,7 @@ require_once('connexion.php');
                           </div>
                           <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label" required>Phone</label>
-                            <input type="password" class="form-control" name="phone" id="exampleInputPassword1" required>
+                            <input type="text" class="form-control" name="phone" id="exampleInputPassword1" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputtext1" class="form-label">Email</label>
@@ -155,8 +155,8 @@ require_once('connexion.php');
                         // hadi ktverfier wesh domain kyn olala
                         list(, $domain) = explode('@', $_POST['email']);
                         if (checkdnsrr($domain, 'MX')) {
-                            $req = "insert into utilisateurs (type ,prenom, nom, phone, email, adresse, service, login, psw)
-                        values (3,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['srv'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
+                            $req = "insert into utilisateurs (type,date_inscription ,prenom, nom, phone, email, adresse, service, login, psw)
+                        values (3,'".date("Y-m-d")."', '" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['srv'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
                             $res = $pdo->query($req);
                             header('location:login.php');
                         }  else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";

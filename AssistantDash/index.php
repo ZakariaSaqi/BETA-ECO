@@ -1,4 +1,11 @@
-<!doctype html>
+<?php
+session_start();
+if(!isset($_SESSION['ida'])){
+  header('location:../login.php');
+}else{
+  require_once('../connexion.php');
+  ?>
+  <!doctype html>
 <html lang="en">
 <head>
   <title>Admin - Accueil </title>
@@ -190,5 +197,5 @@
     </div>
   </div>
 </body>
-
 </html>
+<?php } ?>

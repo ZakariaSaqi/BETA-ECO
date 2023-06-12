@@ -1,4 +1,25 @@
-<html lang="en">
+<?php
+session_start();
+if(!isset($_SESSION['ida'])){
+  header('location:../login.php');
+}else{
+  require_once('../connexion.php');
+  if (isset($_POST['btn'])) {
+    $titre = trim(ucfirst($_POST['titre']));
+    $escapedTitre = str_replace("'", "\'", $titre);
+    $description = trim($_POST['description']);
+    $escapedDescription = str_replace("'", "\'", $description);
+    $req = "INSERT INTO service (titre, description, id_user) 
+    VALUES ('$escapedTitre', '$escapedDescription'," . $_SESSION['ida'] . ")";
+    $res = $pdo->query($req);
+    
+    // Removed commented out code
+    
+    header('Location:services.php');
+    exit(); // Added exit() to stop further execution
+}
+  ?>
+  <html lang="en">
 
 <head>
     <title>Admin - Ajouter séance</title>
@@ -33,7 +54,7 @@
                                         <h6 class="mb-0">Titre</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="titre" id="" class="form-control">
                                     </div>
                                 </div>
                                 <hr>
@@ -46,17 +67,17 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Prix</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="number" name="" id="" class="form-control">
                                     </div>
-                                </div>
+                                </div> -->
                         <div class="row mb-3">
                             <div class="col-sm-6">
-                                <button class="btn btn-info"> Ajouter</button>
+                                <button class="btn btn-info" type="submit" name="btn"> Ajouter</button>
                             </div>
                         </div>
                     </div>
@@ -66,5 +87,5 @@
         </div>
     </div>
 </body>
-
 </html>
+<?php } ?>

@@ -60,6 +60,14 @@
                 <span class="hide-menu">Commentaires</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="feedback.php" aria-expanded="false">
+                <span>
+                <i class="fa-solid fa-comments"></i>
+                </span>
+                <span class="hide-menu">feedbacks</span>
+              </a>
+            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Cours soutien</span>

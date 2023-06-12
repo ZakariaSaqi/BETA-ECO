@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
@@ -34,7 +34,7 @@ if (!isset($_SESSION['idd'])) {
                         </div>
                         <?php
                         if (isset($_POST['btn']) && isset($_FILES['imgcours'])) {
-                            $cour = "../images/cours/" . $_POST['type'] . "-".$_POST['metier']. "-" . $_POST['titre'];
+                            $cour = "../images/cours/" . $_POST['type'] . "-" .$_POST['metier']. "-" . $_POST['titre'];
                             $fileExtension = pathinfo($_FILES['imgcours']['name'], PATHINFO_EXTENSION);
                             $courWithExtension = $cour . "." . $fileExtension;
                             $cours = move_uploaded_file($_FILES['imgcours']['tmp_name'], $courWithExtension);
@@ -46,7 +46,7 @@ if (!isset($_SESSION['idd'])) {
                                         '" . $courWithExtension . "',
                                         '" . ucfirst($_POST['metier'])  . "',
                                         '" . $_POST['niveau'] . "',
-                                        '" . $_SESSION['idd'] . "'
+                                        '" . $_SESSION['ida'] . "'
                                     )";
                             $res = $pdo->query($req);
                              header('location:cours.php');

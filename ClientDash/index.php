@@ -1,7 +1,9 @@
 <?php
-if(!isset($_SESSION['id'])){
+session_start();
+if(!isset($_SESSION['idc'])){
   header('location:../login.php');
 }else{
+  require_once('../connexion.php');
   ?>
 <!DOCTYPE html>
 <html lang="en">

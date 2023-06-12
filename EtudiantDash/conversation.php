@@ -1,127 +1,62 @@
 <?php
 session_start();
-if(!isset($_SESSION['ide'])){
+if (!isset($_SESSION['ide'])) {
   header('location:../login.php');
-}else{
+} else {
   require_once('../connexion.php');
+  $req = "select phone from utilisateurs where type=1";
+  $res = $pdo->query($req);
+  $row = $res->fetch(PDO::FETCH_ASSOC);
+  $phoneNumber = $row['phone'];
+  $numberWithoutPlus = ltrim($phoneNumber, '+');
   ?>
-<html lang="en">
-<head>
-  <title>Admin - Cours</title>
-  <?php include('links.html') ?>
-</head>
+  <html lang="en">
 
-<body>
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <?php include('navbar.php') ?>
-    <div class="container-fluid">
-      <div class="page-content container-fluid " id="page-content">
-        <div class="">
-          <div class="row container d-flex justify-content-center">
-            <div class="col-md-12">
-              <div class="card card-bordered ">
-                <div class="card-header">
-                  <h4 class="card-title"><strong>Nous vous répondrons bientôt</strong></h4>
-                </div>
+  <head>
+    <title>Etudiant - Conversation</title>
+    <?php include('links.html') ?>
+  </head>
 
-
-                <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
-                  style="overflow-y: scroll !important; height:400px !important;">
-                  <div class="media media-chat">
-                    <img class="avatar" src="../images//website/iconBlue.svg" alt="...">
-                    <div class="media-body">
-                      <p>Hi</p>
-                      <p>How are you ...???</p>
-                      <p>What are you doing tomorrow?<br> Can we come up a bar?</p>
-                      <p class="meta"><time datetime="2018">23:58</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-meta-day">Today</div>
-
-                  <div class="media media-chat media-chat-reverse">
-                    <div class="media-body">
-                      <p>Hiii, I'm good.</p>
-                      <p>How are you doing?</p>
-                      <p>Long time no see! Tomorrow office. will be free on sunday.</p>
-                      <p class="meta"><time datetime="2018">00:06</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat">
-                    <img class="avatar" src="../images//website/iconBlue.svg" alt="...">
-                    <div class="media-body">
-                      <p>Okay</p>
-                      <p>We will go on sunday? </p>
-                      <p class="meta"><time datetime="2018">00:07</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat media-chat-reverse">
-                    <div class="media-body">
-                      <p>That's awesome!</p>
-                      <p>I will meet you Sandon Square sharp at 10 AM</p>
-                      <p>Is that okay?</p>
-                      <p class="meta"><time datetime="2018">00:09</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat">
-                    <img class="avatar" src="../images//website/iconBlue.svg" alt="...">
-                    <div class="media-body">
-                      <p>Okay i will meet you on Sandon Square </p>
-                      <p class="meta"><time datetime="2018">00:10</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat media-chat-reverse">
-                    <div class="media-body">
-                      <p>Do you have pictures of Matley Marriage?</p>
-                      <p class="meta"><time datetime="2018">00:10</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat">
-                    <img class="avatar" src="../images//website/iconBlue.svg" alt="...">
-                    <div class="media-body">
-                      <p>Sorry I don't have. i changed my phone.</p>
-                      <p class="meta"><time datetime="2018">00:12</time></p>
-                    </div>
-                  </div>
-
-                  <div class="media media-chat media-chat-reverse">
-                    <div class="media-body">
-                      <p>Okay then see you on sunday!!</p>
-                      <p class="meta"><time datetime="2018">00:12</time></p>
-                    </div>
-                  </div>
-
-                  <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                    <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                  </div>
-                  <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
-                    <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
-                  </div>
-                </div>
-
-                <!-- <div class="publisher bt-1 border-light">
-            <i class="fa-sharp fa-solid fa-user" style="color:#2A3547; font-size: 1.3rem;"></i>
-              <input class="publisher-input" type="text" placeholder="Taper quelque chose.">
-              <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a>
-            </div> -->
-                <div class="col-md-12">
-                  <div class="search">
-                    <input type="text" class="form-control ps-0" placeholder="Taper quelque chose.">
-                    <button class="btn btn-primary "><i class="fa fa-paper-plane"></i></button>
-                  </div>
-                </div>
-
-              </div>
-
+  <body>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+      data-sidebar-position="fixed" data-header-position="fixed">
+      <?php include('navbar.php') ?>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row mb-2 d-flex align-items-center ">
+            <div class="col-md-12 nav-small-cap">
+              <h4>Contactez-nous via WhatsApp!</h4>
+            </div>
+          </div>
+          <div class="row mb-2 d-flex align-items-center ">
+            <div class="col-md-12 px-5">
+              <p>Bienvenue dans l'espace de conversation par WhatsApp de  Beta Éco ! <br> Si vous avez des
+                questions, des préoccupations ou besoin d'une assistance personnalisée, notre équipe dévouée est là pour
+                vous aider. Utilisez ce lien pour nous contacter directement sur WhatsApp et obtenir des réponses rapides
+                à vos demandes.<br> Nous sommes impatients de vous accompagner dans votre parcours d'apprentissage et de vous
+                offrir le soutien dont vous avez besoin. <br> N'hésitez pas à nous contacter dès maintenant !</p>
+            </div>
+          </div>
+          <style>
+            .wtsp{
+              background-color: #2A3547;
+              text-transform: capitalize;
+              font-size: 15px;
+              width: 200px;
+              color: #fff;
+              font-weight: 600;
+              border-radius: 10px;
+            }
+          </style>
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center ">
+            <a href="https://wa.me/<?= $numberWithoutPlus ?>" class="wtsp px-4 py-1 d-flex align-items-center justify-content-around">Cliquez ici <i class="fa-brands fa-whatsapp" style="color:#FFFF; font-size:2rem"></i></a>
+      
             </div>
           </div>
         </div>
-</body>
-</html>
+        </div>
+  </body>
+
+  </html>
 <?php } ?>

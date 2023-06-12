@@ -43,25 +43,32 @@ require_once('connexion.php');
                   $res = $pdo -> query($req);
                   $row = $res -> fetch(PDO :: FETCH_ASSOC);
                   if($res -> rowCount() > 0){
+                    session_start();
                     if($row['type'] == 1){
-                      session_start();
                       $_SESSION['idd'] = $row['id_user'];
                       header('location:DirectorDash/index.php');
                     }
-                    if($row['type'] == 2 && $row['acces'] == 1  ){
-                      session_start();
+                    if($row['type'] == 2    ){
                       $_SESSION['ida'] = $row['id_user'];
-                      header('location:AssistanteDash/index.php');
+                      if($row['acces'] == 0){
+                        header('location:AssistantDash/deactive.php');
+                      }
+                      else {
+                      header('location:AssistantDash/index.php');
+                      }
                     }
                     if($row['type'] == 3){
-                      session_start();
                       $_SESSION['idc'] = $row['id_user'];
                       header('location:ClientDash/index.php');
                     }
-                    if($row['type'] == 4 && $row['etat'] == 1){
-                      session_start();
+                    if($row['type'] == 4 ){
                       $_SESSION['ide'] = $row['id_user'];
-                      header('location:EtudiantDash/index.php');
+                      if($row['etat'] == 0){
+                        header('location:EtudiantDash/deactive.php');
+                      }
+                      else {
+                        header('location:EtudiantDash/index.php');
+                      }
                     }
                   } else echo "<p class='text-center' style='color:red'>Nom d'utilisateur ou mots de passe est incorrecte !</p>";
                 }

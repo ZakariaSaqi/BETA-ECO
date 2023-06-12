@@ -1,17 +1,14 @@
 <?php
 session_start();
-if (!isset($_SESSION['ide'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
-    $reqE = "select * from utilisateurs where id_user=" . $_SESSION['ide'];
-        $resE = $pdo->query($reqE);
-        $rowE = $resE->fetch(PDO::FETCH_ASSOC);
-    $req = "select * from seance  WHERE niveau  = '". $rowE['niveau']."'";
+    $req = "select * from seance ";
     $search = '';
     if (isset($_GET['search-btn'])) {
         $search = trim($_GET['search']);
-        $req .= " WHERE id_seance = '$search' OR type LIKE '%$search%'";
+        $req .= " WHERE id_seance = '$search' OR niveau LIKE '%$search%' OR type LIKE '%$search%'";
     }
     if (isset($_POST['change_etat'])) {
         $id = $_POST['idSeance'];
@@ -68,13 +65,28 @@ if (!isset($_SESSION['ide'])) {
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col" colspan="6">
+                            <a href="ajoutSeance.php" class="btn btn-light py-2 px-4" style="width:max-content">
+                                <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
+                                <p class="text-uppercase m-0">Ajouter une nouvelle séances</p>
+                            </a>
+                        </th>
+                        <th scope="col" colspan="2">
+                            <!-- <button class="btn btn-light py-2 px-4">
+                            <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
+                            <p class="text-uppercase m-0">Exporter au format PDF</p>
+                        </button> -->
+                        </th>
+                    </tr>
+                    <tr>
                         <th scope="col">N°</th>
+                        <th scope="col">Niveau</th>
                         <th scope="col">Date</th>
                         <th scope="col">Heure debut</th>
                         <th scope="col">Heure fin</th>
                         <th scope="col">Type</th>
                         <th scope="col" style="width:80px">Etat</th>
-
+                        <th scope="col">Opérations</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +98,7 @@ if (!isset($_SESSION['ide'])) {
                     ?>
                     <tr>
                         <th scope="row"><?= $data['id_seance'] ?></th>
+                        <td><?= $data['niveau'] ?></td>
                         <td><?= $data['date_seance'] ?></td>
                         <td><?= $data['heure_debut'] ?></td>
                         <td><?= $data['heure_fin'] ?></td>
@@ -97,6 +110,23 @@ if (!isset($_SESSION['ide'])) {
                                  else { echo "En attente"; }
                                  }
                          else {echo "Terminée"; } ?>
+                        </td>
+                        <td class="row" >
+                            <?php
+                             if (date("Y-m-d") < $data['date_seance']){ 
+                                if(  $data['etat'] == 1 ){ ?>
+                                    <form action="" method="post" class="col-3">
+                                <input type="hidden" name="idSeance" value="<?= $data['id_seance'] ?>">
+                                <input type="hidden" name="etat" value="<?= $data['etat'] ?>">
+                                <button type="submit" name="change_etat" class="crud_btn">
+                                    <i class="fa-solid fa-circle-xmark" title="Annuler" style="cursor: pointer;"></i>
+                                </button>
+                            </form>
+                                  <?php }  ?>
+                             
+                            <a href="operaSeance.php?action=update&id=<?= $data['id_seance'] ?>" class="edit col-3"
+                                            title="Edit" data-toggle="tooltip"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <?php } ?>
                         </td>
                         
                     </tr>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('Location: ../login.php');
     exit(); // Added exit() to stop further execution
 } else {
@@ -14,7 +14,7 @@ if (!isset($_SESSION['idd'])) {
         $img = "../images/annonce/" . $titre . $date . ".jpeg";
         $image = move_uploaded_file($_FILES["imgann"]["tmp_name"], $img);
         $req = "INSERT INTO annonce (titre, description, image_annonce, date_annonce, id_user) 
-        VALUES ('$titre', '$escapedDescription', '$img', '$date', " . $_SESSION['idd'] . ")";
+        VALUES ('$titre', '$escapedDescription', '$img', '$date', " . $_SESSION['ida'] . ")";
         $res = $pdo->query($req);
         
         // Removed commented out code

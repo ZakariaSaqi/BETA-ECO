@@ -1,25 +1,26 @@
 <?php
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
-    $req = "select * from cours ";
+    $req = "select * from annonce ";
     $search = '';
     if (isset($_GET['search-btn'])) {
         $search = trim($_GET['search']);
-        $req .= " WHERE titre LIKE '%$search%' OR niveau LIKE '%$search%' OR metier LIKE '%$search%' ";
+        $req .= " WHERE id_annonce = '$search' OR titre LIKE '%$search%' OR description LIKE '%$search%' ";
     }
-    $resultsPerPage = 4;
+    $resultsPerPage = 3;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
     $startIndex = ($currentPage - 1) * $resultsPerPage;
     ?>
+
     <html lang="en">
 
     <head>
-        <title>Admin - Cours & Exercices</title>
+        <title>Admin - Annonces</title>
         <?php include('links.html') ?>
     </head>
 
@@ -29,15 +30,16 @@ if (!isset($_SESSION['idd'])) {
             <?php include('navbar.php') ?>
             <div class="container-fluid">
                 <div class="container">
-                    <form action="cours.php" class="no-styles" method="get">
+                    <form action="annonces.php" class="no-styles" method="get">
                         <div class="row mb-2 d-flex align-items-center ">
                             <div class="col-md-6 nav-small-cap">
-                                <h4>Cours & Exercices</h4>
+                                <h4>Gestion des annonces</h4>
                             </div>
                             <div class="col-md-6">
                                 <div class="search">
                                     <input type="text" name="search" class="form-control ps-0"
-                                        placeholder="Niveau, Métier, Titre ..." value="<?= htmlspecialchars($search) ?>">
+                                        placeholder="ID, Titres, Description, Date ..."
+                                        value="<?= htmlspecialchars($search) ?>">
                                     <button class="btn btn-primary" name="search-btn"><i class="fa fa-search"
                                             style="color:white"></i></button>
                                 </div>
@@ -51,50 +53,55 @@ if (!isset($_SESSION['idd'])) {
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col" colspan="7">
-                                <a href="ajoutCours.php" class="btn btn-light py-2 px-4" style="width:max-content">
+                            <th scope="col" colspan="3">
+                                <a href="ajoutAnnonce.php" class="btn btn-light py-2 px-4" style="width:max-content">
                                     <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
-                                    <p class="text-uppercase m-0">Ajouter une nouveau cours & exercices</p>
+                                    <p class="text-uppercase m-0">Ajouter une nouvelle annonce</p>
                                 </a>
+                            </th>
+                            <th scope="col" colspan="3">
+                                <button class="btn btn-light py-2 px-4">
+                                    <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
+                                    <p class="text-uppercase m-0">Exporter au format PDF</p>
+                                </button>
                             </th>
                         </tr>
                         <tr>
-                            <th scope="col">Type</th>
+                            <th scope="col">N°</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Titre</th>
-                            <th scope="col">Métier</th>
-                            <th scope="col">Niveau</th>
-                            <th scope="col" style="width:200px">Opérations</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date</th>
+                            <th scope="col" style="width:50px">Opération</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $req .= " ORDER BY niveau DESC LIMIT $startIndex, $resultsPerPage";
+                        $req .= " ORDER BY id_annonce DESC LIMIT $startIndex, $resultsPerPage";
                         $res = $pdo->query($req);
                         if ($res->rowCount() > 0) {
                             foreach ($res as $data) {
                                 ?>
                                 <tr>
-                                    <td>
-                                        <?= $data['type'] ?>
-                                    </td>
+                                    <th scope="row">
+                                        <?= $data['id_annonce'] ?>
+                                    </th>
+                                    <td><img src="<?= $data['image_annonce'] ?>" alt="" srcset="" style="width:50px"></td>
                                     <td>
                                         <?= $data['titre'] ?>
                                     </td>
+                                    <td>
+                                    <?= substr($data['description'],0,100)."..." ?>
                                     </td>
                                     <td>
-                                        <?= $data['metier'] ?>
-                                    </td>
-                                    </td>
-                                    <td>
-                                        <?= $data['niveau'] ?>
-                                    </td>
+                                        <?= $data['date_annonce'] ?>
                                     </td>
                                     <td class="row">
-                                    <a href="operaCour.php?action=Telecharger&id=<?= $data['id_cours'] ?>" class="view col-3"
-                                            title="Télécharger" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-download"></i></a>
-                                        <a href="operaCour.php?action=update&id=<?= $data['id_cours'] ?>" class="edit col-3"
+                                        <a href="operaAnnonce.php?action=view&id=<?= $data['id_annonce'] ?>" class="view col-4"
+                                            title="View" data-toggle="tooltip"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a href="operaAnnonce.php?action=update&id=<?= $data['id_annonce'] ?>" class="edit col-4"
                                             title="Edit" data-toggle="tooltip"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="operaCour.php?action=delete&id=<?= $data['id_cours'] ?>" class="edit col-3"
+                                        <a href="operaAnnonce.php?action=delete&id=<?= $data['id_annonce'] ?>" class="edit col-4"
                                             title="Supprimer" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
@@ -103,7 +110,7 @@ if (!isset($_SESSION['idd'])) {
                         } else {
                             ?>
                             <tr>
-                                <td colspan="6"> Aucune cours !</td>
+                                <td colspan="6"> Aucune annonce !</td>
                             </tr>
                             <?php
                         }
@@ -120,16 +127,16 @@ if (!isset($_SESSION['idd'])) {
                         if ($page === $currentPage) {
                             echo ' active';
                         }
-                        echo '" style="color:white" href="cours.php?' . $queryString . '">' . $page . '</a>';
+                        echo '" style="color:white" href="annonces.php?' . $queryString . '">' . $page . '</a>';
                     }
                     ?>
                 </div>
 
-
             </div>
-        </div>
         </div>
     </body>
 
     </html>
-<?php } ?>
+    <?php
+}
+?>

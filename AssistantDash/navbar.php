@@ -12,18 +12,6 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
-          <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Système</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="assistants.php" aria-expanded="false">
-                <span>
-                  <i class="fa-solid fa-users"></i>
-                </span>
-                <span class="hide-menu">Assistants</span>
-              </a>
-            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Cabinet comptable</span>
@@ -58,6 +46,14 @@
                   <i class="fa-solid fa-comment"></i>
                 </span>
                 <span class="hide-menu">Commentaires</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="feedback.php" aria-expanded="false">
+                <span>
+                <i class="fa-solid fa-comments"></i>
+                </span>
+                <span class="hide-menu">feedbacks</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -109,15 +105,18 @@
       <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link nav-icon-hover" href="index.php">
+                <i class="fa-solid fa-house"></i>
+                 </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
             <li class="nav-item d-block d-xl-none">
               <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
                 <i class="ti ti-menu-2"></i>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="index.php">
-                <i class="fa-solid fa-house"></i>
-                 </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-icon-hover" href="javascript:void(0)">
@@ -126,29 +125,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="conversation.php">
-                <i class="fa-solid fa-message"></i>
-                <div class="notification bg-primary rounded-circle"></div>
+              <a class="nav-link nav-icon-hover" href="profil.php">
+              <i class="fa-solid fa-user"></i>
               </a>
             </li>
-          </ul>
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <i class="fa-solid fa-user"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
-                    <a href="profil.php" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                  </div>
-                </div>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link nav-icon-hover" href="logout.php">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              </a>
+            </li>
             </ul>
           </div>
         </nav>

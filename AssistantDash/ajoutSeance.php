@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
@@ -42,7 +42,7 @@ if (!isset($_SESSION['idd'])) {
                                         '" . $_POST['hd'] . "',
                                         '" . $_POST['hf'] . "',
                                         1,
-                                        '" . $_SESSION['idd'] . "'
+                                        '" . $_SESSION['ida'] . "'
                                     )";
                             $res = $pdo->query($req);
                              header('location:seances.php');

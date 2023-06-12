@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');

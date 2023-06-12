@@ -87,7 +87,7 @@ $row = $res -> fetch(PDO :: FETCH_ASSOC);
                                         <h6 class="mb-0">Mots de passe</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                    <?= $row['login'] ?>
+                                    <?= $row['psw'] ?>
                                     </div>
                                     <!-- <input type="text" class="form-control" value="Bay Area, San Francisco, CA"> -->
                                 </div>

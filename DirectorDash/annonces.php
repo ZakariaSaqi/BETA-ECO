@@ -10,7 +10,7 @@ if (!isset($_SESSION['idd'])) {
         $search = trim($_GET['search']);
         $req .= " WHERE id_annonce = '$search' OR titre LIKE '%$search%' OR description LIKE '%$search%' ";
     }
-    $resultsPerPage = 4;
+    $resultsPerPage = 3;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -91,7 +91,7 @@ if (!isset($_SESSION['idd'])) {
                                         <?= $data['titre'] ?>
                                     </td>
                                     <td>
-                                        <?= $data['description'] ?>
+                                    <?= substr($data['description'],0,100)."..." ?>
                                     </td>
                                     <td>
                                         <?= $data['date_annonce'] ?>

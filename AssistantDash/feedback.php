@@ -1,31 +1,31 @@
 <?php
 session_start();
-if (!isset($_SESSION['idd'])) {
+if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
-    $req = "select u.nom, u.prenom , c.*, an.titre from commentaire c, annonce an, utilisateurs u 
-    where c.id_user=u.id_user and c.id_annonce=an.id_annonce";
+    $req = "select u.nom, u.prenom , f.* from feedback f, utilisateurs u 
+    where f.id_user=u.id_user";
     $search = '';
     if (isset($_GET['search-btn'])) {
         $search = trim($_GET['search']);
-        $req .= " AND ( date_comment LIKE '%$search%' OR contenu LIKE '%$search%' )";
+        $req .= " AND  contenu LIKE '%$search%' ";
     }
     if (isset($_POST['change_etat'])) {
-        $id = $_POST['idComnt'];
+        $id = $_POST['idfeed'];
         if ($_POST['etat'] == 1) {
-            $reqUp = "UPDATE commentaire SET etat = 0 WHERE id_commente = $id ";
+            $reqUp = "UPDATE feedback SET etat = 0 WHERE id_feed = $id ";
         } elseif ($_POST['etat'] == 0) {
-            $reqUp = "UPDATE commentaire SET etat = 1 WHERE id_commente = $id ";
+            $reqUp = "UPDATE feedback SET etat = 1 WHERE id_feed = $id ";
         }
         $resUp = $pdo->query($reqUp);
-        header('location:commentaires.php');
+        header('location:feedback.php');
     }
     if(isset($_POST['delete'])){
-        $id = $_POST['idComnt'];
-        $reqdelete ="delete from commentaire where id_commente = $id";
+        $id = $_POST['idfeed'];
+        $reqdelete ="delete from feedback where id_feed = $id";
         $resdelete = $pdo -> query($reqdelete);
-        header('location:commentaires.php');
+        header('location:feedback.php');
     }
     $resultsPerPage = 3;
     $totalResults = $pdo->query($req)->rowCount();
@@ -36,7 +36,7 @@ if (!isset($_SESSION['idd'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Commentaires</title>
+        <title>Admin - Feedbacks</title>
         <?php include('links.html') ?>
     </head>
     <style>
@@ -56,10 +56,10 @@ if (!isset($_SESSION['idd'])) {
             <?php include('navbar.php') ?>
             <div class="container-fluid">
                 <div class="container">
-                    <form action="commentaires.php" class="no-styles" method="get">
+                    <form action="feedbacks.php" class="no-styles" method="get">
                         <div class="row mb-2 d-flex align-items-center ">
                             <div class="col-md-6 nav-small-cap">
-                                <h4>Derniers Commentaires</h4>
+                                <h4>Derniers Feedbacks</h4>
                             </div>
                             <div class="col-md-6">
                                 <div class="search">
@@ -75,13 +75,13 @@ if (!isset($_SESSION['idd'])) {
                 <table class="table" id="Comments">
                     <thead>
                         <tr>
-                            <th scope="col">Commentaires</th>
+                            <th scope="col">feedbacks</th>
                             <th scope="col" style="width:50px">Opération</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $req .= " ORDER BY id_annonce DESC LIMIT $startIndex, $resultsPerPage";
+                        $req .= " ORDER BY id_feed DESC LIMIT $startIndex, $resultsPerPage";
                         $res = $pdo->query($req);
                         if ($res->rowCount() > 0) {
                             foreach ($res as $data) {
@@ -94,17 +94,15 @@ if (!isset($_SESSION['idd'])) {
                                             </div>
                                             <div class="col-md-8">
                                                 <h3>
-                                                    <?= $data['prenom'] . " " . $data['nom'] ?><span class="ms-1"> a répondu à
-                                                        l'annonce
-                                                        "
-                                                        <?= $data['titre'] ?>"
+                                                    <?= $data['prenom'] . " " . $data['nom'] ?><span class="ms-1">
+                                                     a ajouté son feedback.
                                                     </span>
                                                 </h3>
                                                 <p>
                                                     <?php
 
                                                     // Assuming $row3['date_demande'] contains the date from the database
-                                                    $date = strtotime($data['date_comment']);
+                                                    $date = strtotime($data['date_feed']);
                                                     $currentDate = time();
                                                     $secondsDiff = $currentDate - $date;
 
@@ -137,7 +135,7 @@ if (!isset($_SESSION['idd'])) {
                                        <?php 
                                        if( $data['etat'] == 0 ) { ?>
                                          <form action="" method="post" class=" col-4">
-                                            <input type="hidden" name="idComnt" value="<?= $data['id_commente'] ?>">
+                                            <input type="hidden" name="idfeed" value="<?= $data['id_feed'] ?>">
                                             <input type="hidden" name="etat" value="<?= $data['etat'] ?>">
                                             <button type="submit" name="change_etat" class="crud_btn">
                                                 <i class="fa-solid fa-circle-check" style="cursor: pointer;"></i>
@@ -146,7 +144,7 @@ if (!isset($_SESSION['idd'])) {
                                       <?php } ?>
                                       
                                       <form action="" method="post" class=" col-4">
-                                            <input type="hidden" name="idComnt" value="<?= $data['id_commente'] ?>">
+                                            <input type="hidden" name="idfeed" value="<?= $data['id_feed'] ?>">
                                             <button type="submit" name="delete" class="crud_btn">
                                                 <i class="fa-solid fa-circle-xmark" style="cursor: pointer;"></i>
                                             </button>
@@ -161,7 +159,7 @@ if (!isset($_SESSION['idd'])) {
                         } else {
                             ?>
                             <tr>
-                                <td colspan="6"> Aucune commentaire !</td>
+                                <td colspan="6"> Aucune feedback !</td>
                             </tr>
                             <?php
                         }
@@ -178,7 +176,7 @@ if (!isset($_SESSION['idd'])) {
                         if ($page === $currentPage) {
                             echo ' active';
                         }
-                        echo '" style="color:white" href="commentaires.php?' . $queryString . '">' . $page . '</a>';
+                        echo '" style="color:white" href="feedbacks.php?' . $queryString . '">' . $page . '</a>';
                     }
                     ?>
                 </div>
