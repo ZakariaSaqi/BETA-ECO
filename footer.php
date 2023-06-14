@@ -47,22 +47,76 @@
 				</div>
 				<div class="col-md-3 py-md-5 py-4 aside-stretch-right pl-lg-5">
 					<h2 class="footer-heading">Consultation gratuite</h2>
-					<form action="#" class="form-consultation">
+					<?php
+require 'assets/vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require_once('connexion.php');
+    if (isset($_POST['btn'])) {
+        $email = $_POST['email'];
+		$name = ucfirst($_POST['nom']);
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // hadi ktverfier wesh domain kyn olala
+            list(, $domain) = explode('@', $email);
+            if (checkdnsrr($domain, 'MX')) {
+                $to = $email;
+                $sub_before = 'BETA ECO consultation gratuit : '.$_POST['sub'];
+                $message="Nom : ".$name."<br> Email :".$email."<br>".$_POST['message'];
+                $sub_after = str_replace("é", "e", $sub_before);
+
+                $message = $_POST['message']."<br>"
+				.$_POST['nom'] .' <br>';
+
+                // Create a new PHPMailer instance
+                $mail = new PHPMailer(true);
+
+                try {
+                    // Set up SMTP
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'sakizakaria7@gmail.com';
+                    $mail->Password = 'hraxdwrzibkbitim';
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port = 587;
+
+                    // Set up sender and recipient
+                    $mail->setFrom('sakizakaria7@gmail.com', 'BETA ECO');
+                    $mail->addAddress($to);
+                    $mail->isHTML(true);
+
+                    // Set email subject and body
+                    $mail->Subject = $sub_after;
+                    $mail->Body = $message;
+
+                    // Send the email
+                    $mail->send();
+                    echo '<center><p style="color:#fff">Email envoyé<i class="fa-solid fa-check ps-2"></i></p></center>';
+                } catch (Exception $e) {
+                    echo '<center><p style="color:#fff">Échec de l\'envoi de l\'e-mail. <i class="fa-sharp fa-solid fa-triangle-exclamation ps-2" ></i></p></center>';
+                }
+            } else  echo '<center><p style="color:#fff">Adresse email non valide  <i class="fa-sharp fa-solid fa-triangle-exclamation ps-2" ></i></p></center>';
+            
+        } else echo '<center><p style="color:#fff">Adresse email non valide <i class="fa-sharp fa-solid fa-triangle-exclamation ps-2" ></i></p></center>';
+    }
+
+    ?>
+					<form action="#" class="form-consultation" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Nom">
+							<input type="text" name="nom" class="form-control" placeholder="Nom" required>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Email">
+							<input type="email" name="email" class="form-control" placeholder="Email" required>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Subject">
+							<input type="text" name="sub" class="form-control" placeholder="Subject" required>
 						</div>
 						<div class="form-group">
-							<textarea name="" id="" cols="30" rows="3" class="form-control"
-								placeholder="Message"></textarea>
+							<textarea name="message" id="" cols="30" rows="3" class="form-control"
+								placeholder="Message" required></textarea>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="form-control btn btn-primary px-3">Envoyer message</button>
+							<button type="submit" name="btn" class="form-control btn btn-primary px-3">Envoyer message</button>
 						</div>
 					</form>
 				</div>

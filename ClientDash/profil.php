@@ -1,4 +1,20 @@
 <?php
+session_start();
+if (!isset($_SESSION['idc'])) {
+  header('location:../login.php');
+} else {
+  require_once('../connexion.php');
+  ?>
+  <html lang="en">
+
+  <head>
+    <title>Admin - Cours</title>
+  </head>
+  <?php include('links.html'); ?>
+
+  <body>
+    <?php include('navbar.php') ?>
+    <?php
 $requser ="select * from utilisateurs where id_user=".$_SESSION['idc'];
 $resuser = $pdo -> query($requser);
 $rowuser = $resuser -> fetch(PDO :: FETCH_ASSOC);
@@ -103,3 +119,10 @@ $rowuser = $resuser -> fetch(PDO :: FETCH_ASSOC);
                 </div>
     </div>
   </section> 
+    
+    <?php include('footer.php');
+    ?>
+  </body>
+
+  </html>
+<?php } ?>

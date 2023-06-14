@@ -6,7 +6,7 @@
 	<?php include('links.css') ?>
   </head>
   <body>
-    <?php include('navbar.html') ?>
+    <?php include('navbar.php') ?>
     <div class="container-fluid">
 	<div class="hero-wrap">
 		<div class="home-slider owl-carousel">
@@ -18,7 +18,7 @@
 							<div class="text w-100 text-center">
 								<h2>Nous développons votre entreprise</h2>
 								<h1 class="mb-4">Nous vous aidons à innover et à développer votre entreprise</h1>
-								<p><a href="#" class="btn btn-white">Connectez-vous avec nous</a></p>
+								<p><a href="contact.php" class="btn btn-white">Connectez-vous avec nous</a></p>
 							</div>
 						</div>
 					</div>
@@ -33,7 +33,7 @@
 							<div class="text w-100 text-center">
 								<h2>Nous soutenons les entreprises</h2>
 								<h1 class="mb-4">Le meilleur soutien aux entreprises</h1>
-								<p><a href="#" class="btn btn-white">Connectez-vous avec nous</a></p>
+								<p><a href="contact.php" class="btn btn-white">Connectez-vous avec nous</a></p>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							<div class="text w-100 text-center">
 								<h2>Nous donnons des conseils</h2>
 								<h1 class="mb-4">Conseils financiers d'experts</h1>
-								<p><a href="#" class="btn btn-white">Connectez-vous avec nous</a></p>
+								<p><a href="contact.php" class="btn btn-white">Connectez-vous avec nous</a></p>
 							</div>
 						</div>
 					</div>
@@ -569,7 +569,7 @@
 				<div class="col-md-2 d-flex align-items-center">
 					<form action="#" class="subscribe-form">
 						<div class="form-group ">
-						<a href="" target="_blank" class="btn btn-primary">S'inscrir</a>
+						<a href="login.php" target="_blank" class="btn btn-primary">S'inscrir</a>
 						</div>
 					</form>
 				</div>

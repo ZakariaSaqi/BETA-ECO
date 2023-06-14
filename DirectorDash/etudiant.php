@@ -20,7 +20,7 @@ if (!isset($_SESSION['idd'])) {
         $resUp = $pdo->query($reqUp);
         header('location:etudiant.php');
     }
-    $resultsPerPage = 3;
+    $resultsPerPage = 6;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;

@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION['ide'])) {
-  header('location:../login.php');
-} else {
+// session_start();
+// if (!isset($_SESSION['ide'])) {
+//   header('location:../login.php');
+// } else {
   require_once('../connexion.php');
   $req = "select phone from utilisateurs where type=1";
   $res = $pdo->query($req);
@@ -59,4 +59,6 @@ if (!isset($_SESSION['ide'])) {
   </body>
 
   </html>
-<?php } ?>
+<?php 
+// }
+ ?>

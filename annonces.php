@@ -5,7 +5,7 @@
     <?php include('links.css') ?>
   </head>
   <body>
-  <?php include('navbar.html') ?>
+  <?php include('navbar.php') ?>
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/website/image_1.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -22,117 +22,71 @@
   </section>
 
   <section class="ftco-section">
-    <div class="container">
-      <div class="row d-flex">
+  <div class="container">
+    <div class="row d-flex">
+      <?php
+      require_once('connexion.php');
+      $reqAnn = "SELECT  *from  annonce";
+      $resultsPerPage = 6;
+      $totalResults = $pdo->query($reqAnn)->rowCount();
+      $totalPages = ceil($totalResults / $resultsPerPage);
+      $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+      $startIndex = ($currentPage - 1) * $resultsPerPage;
+      $reqAnn .= " ORDER BY id_annonce DESC LIMIT $startIndex, $resultsPerPage";
+      $resAnn = $pdo->query($reqAnn);
+      foreach ($resAnn as $dataAnn) { 
+        $file_path = $dataAnn['image_annonce'];
+        $new_file_path = str_replace("../", "", $file_path);
+        ?>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_1.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_2.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_3.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-              </h3>
-            </div>
-          </div>
-        </div>
+          <a href="annonce.php?id=<?= $dataAnn['id_annonce'] ?>" class="block-20 rounded" style="background-image: url('<?= $new_file_path; ?>');">fix it</a>
 
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_3.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                <div><a href="#">
+                    <?= $dataAnn['date_annonce'] ?>
+                  </a></div>
+                <div>
+                  <a href="#" class="meta-chat">
+                    <span class="fa fa-comment">
+                      <?php
+                      $reqComnNumer = "SELECT COUNT(*) as num FROM commentaire WHERE id_annonce =". $dataAnn['id_annonce'] ;
+                      $resComnNumer = $pdo->query($reqComnNumer);
+                      $rowComn = $resComnNumer -> fetch(PDO :: FETCH_ASSOC);
+                      echo $rowComn['num'];
+                      ?>
+                    </span>
+                  </a>
+                </div>
               </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
+              <h3 class="heading"><a href="#">
+                  <?= $dataAnn['titre'] ?>
+                </a>
               </h3>
             </div>
           </div>
         </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_5.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="annonce.php" class="block-20 rounded" style="background-image: url('images/website/image_6.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-2">
-                <div><a href="#">March 31, 2020</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <?php } ?>
     </div>
-  </section> 
+    <div class="pagination text-center">
+  <?php
+  for ($page = 1; $page <= $totalPages; $page++) {
+    $params = $_GET;
+    $params['page'] = $page;
+    $queryString = http_build_query($params);
+    echo '<a class="btn btn-primary mx-1';
+    if ($page === $currentPage) {
+      echo ' active';
+    }
+    echo '" style="color:white" href="annonces.php?' . $queryString . '">' . $page . '</a>';
+  }
+  ?>
+</div>
+
+  </div>
+</section>
   <?php include('footer.php') ?>
   </body>
 </html>

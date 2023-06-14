@@ -88,10 +88,11 @@ if (!isset($_SESSION['idd'])) {
                                     </th>
                                     <td><img src="<?= $data['image_annonce'] ?>" alt="" srcset="" style="width:50px"></td>
                                     <td>
-                                        <?= $data['titre'] ?>
+                                        
+                                        <?= substr($data['titre'],0,30)."..." ;?>
                                     </td>
                                     <td>
-                                    <?= substr($data['description'],0,100)."..." ?>
+                                    <?= substr($data['description'],0,150)."..." ?>
                                     </td>
                                     <td>
                                         <?= $data['date_annonce'] ?>

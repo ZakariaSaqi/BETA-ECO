@@ -32,7 +32,7 @@ if (!isset($_SESSION['idd'])) {
                         </div>
                         <?php
                         if (isset($_POST['btn'])) {
-                            $req= "update seance set type ='" . $_POST['type'] . "',
+                            $req = "update seance set type ='" . $_POST['type'] . "',
                             niveau= '" . $_POST['niveau'] . "',
                              date_seance=  '" . $_POST['date'] . "',
                              heure_debut=  '" . $_POST['hd'] . "',
@@ -55,7 +55,8 @@ if (!isset($_SESSION['idd'])) {
                                                     <h6 class="mb-0">Date</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="date" value="<?= $row['date_seance'] ?>" name="date" id="" class="form-control">
+                                                    <input type="date" value="<?= $row['date_seance'] ?>" name="date" id=""
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <hr>
@@ -64,7 +65,8 @@ if (!isset($_SESSION['idd'])) {
                                                     <h6 class="mb-0">Heure début</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="time" value="<?= $row['heure_debut'] ?>" name="hd" id="" class="form-control">
+                                                    <input type="time" value="<?= $row['heure_debut'] ?>" name="hd" id=""
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <hr>
@@ -73,7 +75,8 @@ if (!isset($_SESSION['idd'])) {
                                                     <h6 class="mb-0">Heure fin</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="time" name="hf" value="<?= $row['heure_fin'] ?>"  id="" class="form-control">
+                                                    <input type="time" name="hf" value="<?= $row['heure_fin'] ?>" id=""
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -87,14 +90,13 @@ if (!isset($_SESSION['idd'])) {
                                                     <h6 class="mb-0">Niveau</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <select name="niveau" class="form-select  mb-3" required>
-                                                    <option value="<?= $row['niveau'] ?>" selected><?= $row['niveau'] ?>
-                                                        </option>
-                                                        <option value="PME 2">PME 2</option>
-                                                        <option value="PME 1">PME 1</option>
+                                                    <select name="niveau" class="form-select  mb-3">
+                                                        <option value="<?= $row['niveau'] ?>" selected><?= $row['niveau'] ?>
+                                                        <option value="BAC">BAC</option>
+                                                        <option value="BTS">BTS</option>
                                                         <option value="ENCG">ENCG</option>
-                                                        <option value="ISTA">ISTA</option>
-                                                        <option value="FAC">FAC</option>
+                                                        <option value="OFPPT">OFPPT</option>
+                                                        <option value="Faculté">Faculté</option>
                                                     </select>
                                                 </div>
                                             </div>

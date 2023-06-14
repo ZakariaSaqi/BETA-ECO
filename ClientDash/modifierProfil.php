@@ -12,41 +12,10 @@ if (!isset($_SESSION['idc'])) {
     <head>
         <title>Admin - Cours</title>
     </head>
-    <?php include('links.css'); ?>
+    <?php include('links.html'); ?>
 
     <body>
-        <style>
-            .navbar-nav-wrapper ul li i {
-                font-size: 1.2rem;
-                padding-left: .5rem;
-                padding-right: .5rem;
-            }
-        </style>
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container ">
-                <!-- Logo -->
-                <a class="navbar-brand" href="index.php">
-                    <img src="../images/website/iconBlue.svg" alt="BETA ECO" srcset="" style="width: 2.5rem;">
-                </a>
-
-                <!-- Navigation List -->
-                <div class="navbar-nav-wrapper">
-                    <span class="fa fa-bars navbar-toggler" data-toggle="collapse" data-target="#ftco-nav"
-                        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"></span>
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a href="index.php" class="nav-link"><i class="fa-solid fa-house"></i></a>
-                            </li>
-                            <li class="nav-item"><a href="" class="nav-link"><i class="fa-solid fa-bell"></i></a></li>
-                            <li class="nav-item"><a href="#index.php" class="nav-link"><i class="fa-solid fa-user"></i></a>
-                            </li>
-                            <li class="nav-item"><a href="logout.php" class="nav-link"><i
-                                        class="fa-solid fa-right-from-bracket"></i></a></li>
-                        </ul>
-                    </div>
-
-                </div>
-        </nav>
+        <?php include('navbar.php') ?>
         <section id="profil" class="hero-wrap hero-wrap-2" style="background-image: url(../images/website/bg_3.jpg')"
             data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
@@ -73,7 +42,8 @@ if (!isset($_SESSION['idc'])) {
                             // hadi ktverfier wesh domain kyn olala
                             list(, $domain) = explode('@', $_POST['email']);
                             if (checkdnsrr($domain, 'MX')) {
-                                $req2 = "update utilisateurs set prenom ='" . ucfirst($_POST['prenom']) . "', service ='" . $_POST['srv'] . "', nom= '" . strtoupper($_POST['nom']) . "', phone= '" . $_POST['phone'] . "', email='" . $_POST['email'] . "', adresse ='" . $_POST['adresse'] . "', login ='" . $_POST['login'] . "', psw = '" . $_POST['psw'] . "'
+                                $srv = str_replace("'", "\'", $_POST['srv'] ); 
+                                $req2 = "update utilisateurs set prenom ='" . ucfirst($_POST['prenom']) . "', service ='" . $srv. "', nom= '" . strtoupper($_POST['nom']) . "', phone= '" . $_POST['phone'] . "', email='" . $_POST['email'] . "', adresse ='" . $_POST['adresse'] . "', login ='" . $_POST['login'] . "', psw = '" . $_POST['psw'] . "'
                 where type=3  and id_user =" . $_SESSION['idc'];
                                 $res2 = $pdo->query($req2);
                                 header('location:index.php#profil');
@@ -151,12 +121,15 @@ if (!isset($_SESSION['idc'])) {
                                             <h6 class="mb-0">Service</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                        <select name="srv" class="form-select  mb-3">
-                                  <option value="<?=  $row['service'] ?>" selected ><?=  $row['service'] ?></option>
-                                  <option value="CNCS">CNCS</option>
-                                  <option value="Consultation">Consultation</option>
-                                  <option value="Formation">Formation</option>
-                                </select>
+                                            <select name="srv" class="form-select  mb-3">
+                                                <option value="<?= $row['service'] ?>" selected> <?= $row['service'] ?>
+                                                </option>
+                                                <option value="Comptabilité">Comptabilité</option>
+                                                <option value="Etude de projets">Etude de projets</option>
+                                                <option value="Gestion d'exploitation agricole">Gestion d'exploitation
+                                                    agricole</option>
+                                                <option value="Consultation">Consultation</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <hr>

@@ -34,7 +34,7 @@ if (!isset($_SESSION['idd'])) {
                         </div>
                     </div>
                     <?php if (isset($_POST['btn'])) {
-                    $req = "INSERT INTO seance (`type`, `niveau`, `date_seance`, `heure_debut`, `heure_fin`, `etat`,`id_user`)
+                        $req = "INSERT INTO seance (`type`, `niveau`, `date_seance`, `heure_debut`, `heure_fin`, `etat`,`id_user`)
                                     VALUES (
                                         '" . $_POST['type'] . "',
                                          '" . $_POST['niveau'] . "',
@@ -44,9 +44,9 @@ if (!isset($_SESSION['idd'])) {
                                         1,
                                         '" . $_SESSION['idd'] . "'
                                     )";
-                            $res = $pdo->query($req);
-                             header('location:seances.php');
-                        } ?>
+                        $res = $pdo->query($req);
+                        header('location:seances.php');
+                    } ?>
                     <form action="" method="post">
                         <div class="row gutters-sm">
                             <div class="col-md-6 mb-3">
@@ -89,13 +89,13 @@ if (!isset($_SESSION['idd'])) {
                                                 <h6 class="mb-0">Niveau</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <select name="niveau" class="form-select  mb-3" required>
-                                                    <option value="" selected>Choisir</option>
-                                                    <option value="PME 2">PME 2</option>
-                                                    <option value="PME 1">PME 1</option>
+                                                <select name="niveau" class="form-select  mb-3">
+                                                    <option value="" selected disabled>Choisir</option>
+                                                    <option value="BAC">BAC</option>
+                                                    <option value="BTS">BTS</option>
                                                     <option value="ENCG">ENCG</option>
-                                                    <option value="ISTA">ISTA</option>
-                                                    <option value="FAC">FAC</option>
+                                                    <option value="OFPPT">OFPPT</option>
+                                                    <option value="Faculté">Faculté</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -129,5 +129,5 @@ if (!isset($_SESSION['idd'])) {
     </body>
 
     </html>
-<?php } 
-ob_end_flush();?>
+<?php }
+ob_end_flush(); ?>

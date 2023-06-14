@@ -16,7 +16,7 @@ if (!isset($_SESSION['idd'])) {
         $resUp = $pdo->query($reqUp);
         header('location:seances.php');
     }
-    $resultsPerPage = 4;
+    $resultsPerPage = 6;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;

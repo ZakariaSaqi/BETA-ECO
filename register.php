@@ -42,14 +42,18 @@ require_once('connexion.php');
                     <h3 class="text-center pb-4">Inscription</h3>
                   </div>
                 </div>
+                <?php $type = isset($_GET['type']) ? $_GET['type'] : '';?>
                 <form action="" method="get">
                   <div class="row">
                     <div class="col-sm-10 text-secondary">
-                      <select name="type" class="form-select  mb-3">
-                        <option value="" selected>Type</option>
-                        <option value="Clients">Clients</option>
-                        <option value="Etudiants">Etudiants</option>
+                      <select name="type" class="form-select mb-3">
+                        <option value="" selected disabled>Sélectionner un type</option>
+                        <option value="Clients" <?php if ($type == "Clients")
+                          echo "selected"; ?>>Clients</option>
+                        <option value="Etudiants" <?php if ($type == "Etudiants")
+                          echo "selected"; ?>>Etudiants</option>
                       </select>
+
                     </div>
                     <div class="col-sm-2">
                       <button class="btn btn-info" type="submit" name="btn">Choisir</button>
@@ -57,25 +61,27 @@ require_once('connexion.php');
                   </div>
                 </form>
                 <?php
-                 if (isset($_GET['btn'])) {
-                  $type = $_GET['type'];
+                if (isset($_GET['btn'])) {
                   if ($type == "Etudiants") {
-                  if (isset($_POST['btn'])) {
-                    if ($_POST['psw'] == $_POST['cpsw']) {
-                    $phoneRegex = "/^\+212[5-7]\d{8}$/";
-                    if (preg_match($phoneRegex, $_POST['phone']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                      // hadi ktverfier wesh domain kyn olala
-                      list(, $domain) = explode('@', $_POST['email']);
-                      if (checkdnsrr($domain, 'MX')) {
-                          $req = "insert into utilisateurs (type, date_inscription, etat,prenom,  nom, phone, email, adresse, niveau, login, psw)
-                      values (4,'".date("Y-m-d")."' ,  1,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
-                          $res = $pdo->query($req);
-                          header('location:login.php');
-                      }  else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
-                    } else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
-                  } else echo "<center>Mots de passe pas correspondant !";
-                }
-                    
+                    if (isset($_POST['btn'])) {
+                      if ($_POST['psw'] == $_POST['cpsw']) {
+                        $phoneRegex = "/^\+212[5-7]\d{8}$/";
+                        if (preg_match($phoneRegex, $_POST['phone']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                          // hadi ktverfier wesh domain kyn olala
+                          list(, $domain) = explode('@', $_POST['email']);
+                          if (checkdnsrr($domain, 'MX')) {
+                            $req = "insert into utilisateurs (type, date_inscription, etat,prenom,  nom, phone, email, adresse, niveau, login, psw)
+                      values (4,'" . date("Y-m-d") . "' ,  1,'" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['niveau'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
+                            $res = $pdo->query($req);
+                            header('location:login.php');
+                          } else
+                            echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
+                        } else
+                          echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
+                      } else
+                        echo "<center>Mots de passe pas correspondant !";
+                    }
+
                     ?>
                     <form method="post">
                       <hr>
@@ -113,11 +119,11 @@ require_once('connexion.php');
                             <div class="col-sm-10 text-secondary">
                               <select name="niveau" class="form-select  mb-3">
                                 <option value="" selected disabled>Choisir</option>
-                                <option value="PME 2">PME 2</option>
-                                <option value="PME 1">PME 1</option>
+                                <option value="BAC">BAC</option>
+                                <option value="BTS">BTS</option>
                                 <option value="ENCG">ENCG</option>
-                                <option value="ISTA">ISTA</option>
-                                <option value="FAC">FAC</option>
+                                <option value="OFPPT">OFPPT</option>
+                                <option value="Faculté">Faculté</option>
                               </select>
                             </div>
                           </div>
@@ -147,22 +153,26 @@ require_once('connexion.php');
                         </div>
                       </div>
                     </form>
-                  <?php } else if ($type == "Clients") { 
+                  <?php } else if ($type == "Clients") {
                     if (isset($_POST['btn'])) {
                       if ($_POST['psw'] == $_POST['cpsw']) {
-                      $phoneRegex = "/^\+212[5-7]\d{8}$/";
-                      if (preg_match($phoneRegex, $_POST['phone']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                        // hadi ktverfier wesh domain kyn olala
-                        list(, $domain) = explode('@', $_POST['email']);
-                        if (checkdnsrr($domain, 'MX')) {
+                        $phoneRegex = "/^\+212[5-7]\d{8}$/";
+                        if (preg_match($phoneRegex, $_POST['phone']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                          // hadi ktverfier wesh domain kyn olala
+                          list(, $domain) = explode('@', $_POST['email']);
+                          if (checkdnsrr($domain, 'MX')) {
+                            $srv = str_replace("'", "\'", $_POST['srv'] ); 
                             $req = "insert into utilisateurs (type,date_inscription ,prenom, nom, phone, email, adresse, service, login, psw)
-                        values (3,'".date("Y-m-d")."', '" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $_POST['srv'] . "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
+                        values (3,'" . date("Y-m-d") . "', '" . ucfirst($_POST['prenom']) . "', '" . strtoupper($_POST['nom']) . "', '" . $_POST['phone'] . "','" . $_POST['email'] . "', '" . $_POST['adresse'] . "','" . $srv. "', '" . $_POST['login'] . "','" . $_POST['psw'] . "')";
                             $res = $pdo->query($req);
                             header('location:login.php');
-                        }  else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
-                      } else echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
-                    } else echo "<center>Mots de passe pas correspondant !";
-                  }?>
+                          } else
+                            echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
+                        } else
+                          echo "<center>Numero de téléphone ou adresse email incorrecte !</center>";
+                      } else
+                        echo "<center>Mots de passe pas correspondant !";
+                    } ?>
                       <form method="post">
                         <hr>
                         <div class="row">
@@ -194,9 +204,10 @@ require_once('connexion.php');
                               <div class="col-sm-10 text-secondary">
                                 <select name="srv" class="form-select  mb-3">
                                   <option value="" selected disabled>Choisir</option>
-                                  <option value="CNCS">CNCS</option>
+                                  <option value="Comptabilité">Comptabilité</option>
+                                  <option value="Etude de projets">Etude de projets</option>
+                                  <option value="Gestion d'exploitation agricole">Gestion d'exploitation agricole</option>
                                   <option value="Consultation">Consultation</option>
-                                  <option value="Formation">Formation</option>
                                 </select>
                               </div>
                             </div>

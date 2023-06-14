@@ -24,18 +24,29 @@ if(!isset($_SESSION['idd'])){
               <div class="card-body">
                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                   <div class="mb-3 mb-sm-0">
-                    <h5 class="card-title fw-semibold">Sales Overview</h5>
+                    <h5 class="card-title fw-semibold">Nouveaux e-mails</h5>
                   </div>
-                  <div>
-                    <select class="form-select">
-                      <option value="1">March 2023</option>
-                      <option value="2">April 2023</option>
-                      <option value="3">May 2023</option>
-                      <option value="4">June 2023</option>
-                    </select>
+                  
+                </div>
+                <div>
+                  <div class="row">
+                    <div class="card p-3">
+                      <h6>Un nouveau message de Zakaria Al-Saqi</h6>
+                      <p style ="font-size:12px">12-10-2023</p>
+                      <p>Subjet</p>
+                      <hr>
+                      <h6> Nouvelle message from Zakaria SAKI !</h6>
+                      <p>12-10-2023</p>
+                      <p>Subject Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt</p>
+                      <hr>
+                      <h6> Nouvelle message from Zakaria SAKI !</h6>
+                      <p>12-10-2023</p>
+                      <p>Subject Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt</p>
+                   
+                    </div>
+                    <p style=" color:#5D87FF ">Pour plus d'informations, Vérifier votre boîte de réception !</p>
                   </div>
                 </div>
-                <div id="chart"></div>
               </div>
             </div>
           </div>
@@ -43,34 +54,48 @@ if(!isset($_SESSION['idd'])){
             <div class="row">
               <div class="col-lg-12">
                 <!-- Yearly Breakup -->
+                <?php
+                  $req1 = "SELECT count(id_user) as num, niveau FROM utilisateurs WHERE type=4 GROUP BY niveau ORDER by niveau ASC";
+                  $res1 = $pdo->query($req1);
+                  $niveau = [];
+                  $numE = [];
+                  foreach ($res1 as $data1) {
+                    $niveau[] = $data1['niveau'];
+                    $numE[] = $data1['num'];
+                  }
+                  $sumE = array_sum($numE);
+                  ?>
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
-                    <h5 class="card-title mb-9 fw-semibold">Yearly Breakup</h5>
+                    <h5 class="card-title mb-9 fw-semibold">Total des étudiants <?= " ".$sumE ?></h5>
                     <div class="row align-items-center">
-                      <div class="col-8">
-                        <h4 class="fw-semibold mb-3">$36,358</h4>
-                        <div class="d-flex align-items-center mb-3">
-                          <span
-                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
-                            <i class="ti ti-arrow-up-left text-success"></i>
-                          </span>
-                          <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                          <p class="fs-3 mb-0">last year</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                          <div class="me-4">
-                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
-                          </div>
-                          <div>
-                            <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-4">
+                      <div class="col-12">
                         <div class="d-flex justify-content-center">
-                          <div id="breakup"></div>
+                        <canvas id="myChart"></canvas>
+                
+                <script>
+                  const ctx = document.getElementById('myChart');
+                 new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                      labels: <?php echo json_encode($niveau); ?>,
+                      datasets: [{
+                        label: 'Nombre',
+                        data: <?php echo json_encode($numE); ?>,
+                        fill: false,
+                        borderColor: '#5D87FF',
+                        tension: 0.1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
                         </div>
                       </div>
                     </div>
