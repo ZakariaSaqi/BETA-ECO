@@ -51,7 +51,7 @@ if (!isset($_SESSION['ide'])) {
                 <form action="seances.php" class="no-styles" method="get">
                     <div class="row mb-2 d-flex align-items-center ">
                         <div class="col-md-6 nav-small-cap">
-                            <h4>Gestion des séances</h4>
+                            <h4>Liste des séances</h4>
                         </div>
                         <div class="col-md-6">
                             <div class="search">
@@ -68,8 +68,7 @@ if (!isset($_SESSION['ide'])) {
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">N°</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Date de séance</th>
                         <th scope="col">Heure debut</th>
                         <th scope="col">Heure fin</th>
                         <th scope="col">Type</th>
@@ -85,7 +84,6 @@ if (!isset($_SESSION['ide'])) {
                         foreach ($res as $data) {
                     ?>
                     <tr>
-                        <th scope="row"><?= $data['id_seance'] ?></th>
                         <td><?= $data['date_seance'] ?></td>
                         <td><?= $data['heure_debut'] ?></td>
                         <td><?= $data['heure_fin'] ?></td>

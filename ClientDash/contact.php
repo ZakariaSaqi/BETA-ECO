@@ -70,7 +70,7 @@ if (!isset($_SESSION['idc'])) {
 															$mail->Host = 'smtp.gmail.com';
 															$mail->SMTPAuth = true;
 															$mail->Username = 'sakizakaria7@gmail.com';
-															$mail->Password = 'hraxdwrzibkbitim';
+															$mail->Password = 'ertxnxnxvctveqge';
 															$mail->SMTPSecure = 'tls';
 															$mail->Port = 587;
 
@@ -85,6 +85,12 @@ if (!isset($_SESSION['idc'])) {
 
 															// Send the email
 															$mail->send();
+															$req3 = "select  id_user from utilisateurs where type = 1";
+								$res3 = $pdo -> query($req3);
+								while($row3 = $res3 ->fetch(PDO :: FETCH_ASSOC)){
+									$req_notif = "insert into notification (type_notif ,message_notif, etat_notif, id_user) values('Nouvelle consultation' , '$name : ".$_POST['message']."', 1,".$row3['id_user'].")";
+									$res_notif = $pdo -> query($req_notif);
+								}
 															echo '<center><p style="color:#2A3547">Email envoyé<i class="fa-solid fa-check ps-2"></i></p></center>';
 														} catch (Exception $e) {
 															echo '<center><p style="color:#2A3547">Échec de l\'envoi de l\'e-mail. <i class="fa-sharp fa-solid fa-triangle-exclamation ps-2" ></i></p></center>';

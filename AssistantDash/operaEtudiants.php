@@ -141,7 +141,7 @@ if (!isset($_SESSION['ida'])) {
                                     // hadi ktverfier wesh domain kyn olala
                                     list(, $domain) = explode('@', $_POST['email']);
                                     if (checkdnsrr($domain, 'MX')) {
-                                        $req2 = "update utilisateurs set prenom ='" . ucfirst($_POST['prenom']) . "', nom= '" . strtoupper($_POST['nom']) . "', phone= '" . $_POST['phone'] . "', email='" . $_POST['email'] . "', adresse ='" . $_POST['adresse'] . "', login ='" . $_POST['login'] . "', psw = '" . $_POST['psw'] . "'
+                                        $req2 = "update utilisateurs set prenom ='" . ucfirst($_POST['prenom']) . "', nom= '" . strtoupper($_POST['nom']) . "', phone= '" . $_POST['phone'] . "', email='" . $_POST['email'] . "', adresse ='" . $_POST['adresse'] . "', niveau ='" . $_POST['niveau'] . "', login ='" . $_POST['login'] . "', psw = '" . $_POST['psw'] . "'
                 where type=4  and id_user = $id";
                                         $res2 = $pdo->query($req2);
                                         header('location:etudiant.php');
@@ -218,14 +218,13 @@ if (!isset($_SESSION['ida'])) {
                                                     <h6 class="mb-0">Niveau</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                <select name="niveau" class="form-select   mb-3">
+                                                    <select name="niveau" class="form-select  mb-3">
                                                         <option value="<?= $row['niveau'] ?>" selected><?= $row['niveau'] ?>
-                                                        </option>
-                                                        <option value="PME 2">PME 2</option>
-                                                        <option value="PME 1">PME 1</option>
-                                                        <option value="ENCG">ENCG</option>
-                                                        <option value="ISTA">ISTA</option>
-                                                        <option value="FAC">FAC</option>
+                                                            <option value="BAC">BAC</option>
+                                                            <option value="BTS">BTS</option>
+                                                            <option value="ENCG">ENCG</option>
+                                                            <option value="OFPPT">OFPPT</option>
+                                                            <option value="Faculté">Faculté</option>
                                                     </select>
                                                 </div>
                                             </div>

@@ -34,7 +34,7 @@ if (!isset($_SESSION['ida'])) {
                         </div>
                     </div>
                     <?php if (isset($_POST['btn'])) {
-                    $req = "INSERT INTO seance (`type`, `niveau`, `date_seance`, `heure_debut`, `heure_fin`, `etat`,`id_user`)
+                        $req = "INSERT INTO seance (`type`, `niveau`, `date_seance`, `heure_debut`, `heure_fin`, `etat`,`id_user`)
                                     VALUES (
                                         '" . $_POST['type'] . "',
                                          '" . $_POST['niveau'] . "',
@@ -44,9 +44,17 @@ if (!isset($_SESSION['ida'])) {
                                         1,
                                         '" . $_SESSION['ida'] . "'
                                     )";
-                            $res = $pdo->query($req);
-                             header('location:seances.php');
-                        } ?>
+                        $res = $pdo->query($req);
+                        if ($res) {
+                            $req3 = "select id_user from utilisateurs u where type = 4 and etat = 1 and niveau='".$_POST['niveau']."'" ;
+                            $res3 = $pdo->query($req3);
+                            while ($row3 = $res3->fetch(PDO::FETCH_ASSOC)) {
+                                $req_notif = "insert into notification (type_notif, etat_notif, id_user) values('Nouvelle séance ". "Le ".$_POST['date'].". <br> A partire de ".$_POST['hd'].".  ', 1," . $row3['id_user'] . ")";
+                                $res_notif = $pdo->query($req_notif);
+                            }
+                        }
+                        header('location:seances.php');
+                    } ?>
                     <form action="" method="post">
                         <div class="row gutters-sm">
                             <div class="col-md-6 mb-3">
@@ -89,13 +97,13 @@ if (!isset($_SESSION['ida'])) {
                                                 <h6 class="mb-0">Niveau</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <select name="niveau" class="form-select  mb-3" required>
-                                                    <option value="" selected>Choisir</option>
-                                                    <option value="PME 2">PME 2</option>
-                                                    <option value="PME 1">PME 1</option>
+                                                <select name="niveau" class="form-select  mb-3">
+                                                    <option value="" selected disabled>Choisir</option>
+                                                    <option value="BAC">BAC</option>
+                                                    <option value="BTS">BTS</option>
                                                     <option value="ENCG">ENCG</option>
-                                                    <option value="ISTA">ISTA</option>
-                                                    <option value="FAC">FAC</option>
+                                                    <option value="OFPPT">OFPPT</option>
+                                                    <option value="Faculté">Faculté</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -129,5 +137,5 @@ if (!isset($_SESSION['ida'])) {
     </body>
 
     </html>
-<?php } 
-ob_end_flush();?>
+<?php }
+ob_end_flush(); ?>

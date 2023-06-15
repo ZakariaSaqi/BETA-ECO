@@ -10,7 +10,7 @@ if (!isset($_SESSION['ida'])) {
         $search = trim($_GET['search']);
         $req .= " AND ( id_user = '$search' OR  nom like '%$search%' OR prenom LIKE '%$search%' OR service LIKE '%$search%' )";
     }
-    $resultsPerPage = 3;
+    $resultsPerPage = 6;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;

@@ -10,7 +10,7 @@ if (!isset($_SESSION['ida'])) {
         $search = trim($_GET['search']);
         $req .= " WHERE titre LIKE '%$search%' OR niveau LIKE '%$search%' OR metier LIKE '%$search%' ";
     }
-    $resultsPerPage = 4;
+    $resultsPerPage = 6;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;

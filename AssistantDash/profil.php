@@ -4,6 +4,8 @@ if(!isset($_SESSION['ida'])){
   header('location:../login.php');
 }else{
   require_once('../connexion.php');
+  ?>
+  <?php
 $req ="select * from utilisateurs where id_user=".$_SESSION['ida'];
 $res = $pdo -> query($req);
 $row = $res -> fetch(PDO :: FETCH_ASSOC);

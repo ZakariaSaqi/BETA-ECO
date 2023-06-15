@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if (!isset($_SESSION['idc'])) {
   header('location:../login.php');
@@ -96,10 +97,12 @@ if (!isset($_SESSION['idc'])) {
                 <?php
 
                 if (isset($_POST['btn'])) {
-                  $reqCom = "insert into commentaire (contenu, date_commente, id_annoonce, id_user, etat) 
-                values ('" . $_POST['commente'] . "', '" . date("Y-m-d") . "', " . $_GET['id'] . ", " . $_SESSION['idc'] . ", 0)";
+                  $reqCom = "insert into commentaire (contenu, date_comment, id_annonce, id_user, etat) 
+                values ('" . $_POST['commente'] . "', '" . date("Y-m-d") . "', " . $_GET['id'] . ", " . $_SESSION['idc'] . ", 1)";
+                echo $reqCom;
                   $resCom = $pdo -> query($reqCom);
                   echo '<center><p style="color:#fff">Votre commentaire sera poster si l\'admin accépter  <i class="fa-solid fa-check ps-2"></i></p></center>';
+                  header("Location: annonce.php?id=".$_GET['id']);
                 }
                 ?>
                 <form action="#" method="post" class="p-5 bg-light">
@@ -155,4 +158,6 @@ if (!isset($_SESSION['idc'])) {
 
     </html>
   <?php }
-} ?>
+} 
+ob_end_flush();
+?>

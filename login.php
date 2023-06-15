@@ -83,13 +83,7 @@ require_once('connexion.php');
                     <input type="password" name="psw" class="form-control" id="exampleInputPassword1">
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="form-check">
-                      <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label text-dark" for="flexCheckChecked">
-                        Se souvenir de cet appareil
-                      </label>
-                    </div>
-                    <a class="text-primary fw-bold" href="./index.html">Mot de passe oublié ?</a>
+                    <a class="text-primary fw-bold" href="forgotpsw.php">Mot de passe oublié ?</a>
                   </div>
                   <button  type="submit" name="btn" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Se connecter</button>
                   <div class="d-flex align-items-center justify-content-center">

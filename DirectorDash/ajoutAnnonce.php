@@ -9,16 +9,21 @@ if (!isset($_SESSION['idd'])) {
         $titre = trim(ucfirst($_POST['titre']));
         $date = date("Y-m-d");
         $escapedTitre = str_replace("'", "\'", $titre);
-    $description = trim($_POST['description']);
-    $escapedDescription = str_replace("'", "\'", $description);
+        $description = trim($_POST['description']);
+        $escapedDescription = str_replace("'", "\'", $description);
         $img = "../images/annonce/" . $titre . $date . ".jpeg";
         $image = move_uploaded_file($_FILES["imgann"]["tmp_name"], $img);
         $req = "INSERT INTO annonce (titre, description, image_annonce, date_annonce, id_user) 
         VALUES ('$titre', '$escapedDescription', '$img', '$date', " . $_SESSION['idd'] . ")";
         $res = $pdo->query($req);
-        
-        // Removed commented out code
-        
+        if ($res) {
+            $req3 = "select  id_user from utilisateurs where type = 3";
+            $res3 = $pdo->query($req3);
+            while ($row3 = $res3->fetch(PDO::FETCH_ASSOC)) {
+                $req_notif = "insert into notification (type_notif,message_notif, etat_notif, id_user) values('Nouvelle annonce', '$escapedTitre', 1," . $row3['id_user'] . ")";
+                $res_notif = $pdo->query($req_notif);
+            }
+        }
         header('Location: annonces.php');
         exit(); // Added exit() to stop further execution
     }

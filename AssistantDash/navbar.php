@@ -1,3 +1,20 @@
+<?php
+$reqA = "select id_user from utilisateurs where type=1";
+$resA = $pdo->query($reqA);
+$rowA = $resA -> fetch(PDO::FETCH_ASSOC);
+$reqNo = "select *from notification where etat_notif=1 and id_user=" . $rowA['id_user'];
+$resNo = $pdo->query($reqNo);
+$countnotif = $resNo->rowCount() 
+?>
+<style>
+  .navbar-nav .dropdown-toggle::after {
+    display: none;
+  } .dropdown-menu i{
+    font-size: 15px ;
+    color : #2A3547;
+    padding-right: 10px;
+  }
+</style>
 <aside class="left-sidebar ">
       <!-- Sidebar scroll-->
       <div>
@@ -104,13 +121,6 @@
       <!--  Header Start -->
       <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <ul class="navbar-nav">
-          <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="index.php">
-                <i class="fa-solid fa-house"></i>
-                 </a>
-            </li>
-          </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
             <li class="nav-item d-block d-xl-none">
@@ -118,11 +128,40 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
+            <li class="nav-item dropdown">
+          <a class="nav-link nav-icon-hover dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-bell"></i>
+            <?php if ($countnotif > 0) { ?>
+            <div class="notification bg-primary rounded-circle" id="active"></div>
+            <?php } ?>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end"  aria-labelledby="dropdownMenuButton" id="notificationContainer">
+            <li>
+              <?php if ($countnotif > 0) {
+                foreach ($resNo as $dataNoti) { ?>
+                  <div class="dropdown-item">
+                      <h4 class="fw-blod">
+                        <?= $dataNoti['type_notif'] ?>
+                        </h5>
+                        <p style="font-size:10px" class="mb-3">
+                          <?= $dataNoti['date_notif'] ?>
+                        </p>
+                        <p  class="mb-1">
+                        <i class="fa-solid fa-envelope"></i>
+                          <?= substr($dataNoti['message_notif'],0,20) ?>
+                        </p>
+                    </div>
+                <?php }
+              } else
+                echo "<p class='px-3 py-1'>Aucune notification !<p>" ?>
+              </li>
+            </ul>
+          </li>
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="fa-solid fa-bell"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
+              <a class="nav-link nav-icon-hover" href="index.php">
+                <i class="fa-solid fa-house"></i>
+                 </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-icon-hover" href="profil.php">
@@ -138,3 +177,14 @@
           </div>
         </nav>
       </header>
+      <script>
+
+document.getElementById('dropdownMenuButton').addEventListener('click', function () {
+<?php
+          $updatenotif = "UPDATE notification SET etat_notif = 0 WHERE etat_notif = 1 AND id_user =" . $_SESSION['ida'];
+          $pdo->query($updatenotif);
+
+          ?>
+
+});
+</script>

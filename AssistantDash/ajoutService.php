@@ -12,9 +12,14 @@ if(!isset($_SESSION['ida'])){
     $req = "INSERT INTO service (titre, description, id_user) 
     VALUES ('$escapedTitre', '$escapedDescription'," . $_SESSION['ida'] . ")";
     $res = $pdo->query($req);
-    
-    // Removed commented out code
-    
+    if ($res) {
+        $req3 = "select  id_user from utilisateurs where type = 3";
+        $res3 = $pdo->query($req3);
+        while ($row3 = $res3->fetch(PDO::FETCH_ASSOC)) {
+            $req_notif = "insert into notification (type_notif, message_notif, etat_notif, id_user) values('Nouveau service', '$escapedTitre', 1," . $row3['id_user'] . ")";
+            $res_notif = $pdo->query($req_notif);
+        }
+    }
     header('Location:services.php');
     exit(); // Added exit() to stop further execution
 }

@@ -76,7 +76,7 @@ require_once('../connexion.php');
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
                     $mail->Username = 'sakizakaria7@gmail.com';
-                    $mail->Password = 'hraxdwrzibkbitim';
+                    $mail->Password = 'ertxnxnxvctveqge';
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 

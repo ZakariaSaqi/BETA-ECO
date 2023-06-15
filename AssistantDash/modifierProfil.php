@@ -36,7 +36,7 @@ if(!isset($_SESSION['ida'])){
                             list(, $domain) = explode('@', $_POST['email']);
                             if (checkdnsrr($domain, 'MX')) {
                                 $req2 = "update utilisateurs set prenom ='" . ucfirst($_POST['prenom']) . "', nom= '" . strtoupper($_POST['nom']) . "', phone= '" . $_POST['phone'] . "', email='" . $_POST['email'] . "', adresse ='" . $_POST['adresse'] . "', login ='" . $_POST['login'] . "', psw = '" . $_POST['psw'] . "'
-                where type=2  and id_user =" . $_SESSION['ida'];
+                where type=1  and id_user =" . $_SESSION['ida'];
                                 $res2 = $pdo->query($req2);
                                 header('location:profil.php');
                             } else

@@ -45,6 +45,14 @@ if (!isset($_SESSION['idd'])) {
                                         '" . $_SESSION['idd'] . "'
                                     )";
                         $res = $pdo->query($req);
+                        if ($res) {
+                            $req3 = "select id_user from utilisateurs u where type = 4 and etat = 1 and niveau='".$_POST['niveau']."'" ;
+                            $res3 = $pdo->query($req3);
+                            while ($row3 = $res3->fetch(PDO::FETCH_ASSOC)) {
+                                $req_notif = "insert into notification (type_notif, etat_notif, id_user) values('Nouvelle séance ". "Le ".$_POST['date'].". <br> A partire de ".$_POST['hd'].".  ', 1," . $row3['id_user'] . ")";
+                                $res_notif = $pdo->query($req_notif);
+                            }
+                        }
                         header('location:seances.php');
                     } ?>
                     <form action="" method="post">

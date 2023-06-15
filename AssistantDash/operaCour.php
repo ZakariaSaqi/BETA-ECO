@@ -126,14 +126,13 @@ if (!isset($_SESSION['ida'])) {
                                                     <h6 class="mb-0">Niveau</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <select name="niveau" class="form-select   mb-3">
+                                                <select name="niveau" class="form-select  mb-3">
                                                         <option value="<?= $row['niveau'] ?>" selected><?= $row['niveau'] ?>
-                                                        </option>
-                                                        <option value="PME 2">PME 2</option>
-                                                        <option value="PME 1">PME 1</option>
-                                                        <option value="ENCG">ENCG</option>
-                                                        <option value="ISTA">ISTA</option>
-                                                        <option value="FAC">FAC</option>
+                                                            <option value="BAC">BAC</option>
+                                                            <option value="BTS">BTS</option>
+                                                            <option value="ENCG">ENCG</option>
+                                                            <option value="OFPPT">OFPPT</option>
+                                                            <option value="Faculté">Faculté</option>
                                                     </select>
                                                 </div>
                                             </div>

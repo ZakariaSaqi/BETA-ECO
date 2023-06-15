@@ -5,7 +5,7 @@ if (!isset($_SESSION['ida'])) {
     header('location:../login.php');
 } else {
     require_once('../connexion.php');
-?>
+    ?>
     <html lang="en">
 
     <head>
@@ -34,22 +34,22 @@ if (!isset($_SESSION['ida'])) {
                         </div>
                         <?php
                         if (isset($_POST['btn']) && isset($_FILES['imgcours'])) {
-                            $cour = "../images/cours/" . $_POST['type'] . "-" .$_POST['metier']. "-" . $_POST['titre'];
+                            $cour = "../images/cours/" . $_POST['type'] . "-" . $_POST['metier'] . "-" . $_POST['titre'];
                             $fileExtension = pathinfo($_FILES['imgcours']['name'], PATHINFO_EXTENSION);
                             $courWithExtension = $cour . "." . $fileExtension;
                             $cours = move_uploaded_file($_FILES['imgcours']['tmp_name'], $courWithExtension);
-                            
+
                             $req = "INSERT INTO cours (type, titre, cours,metier ,niveau, id_user)
                                     VALUES (
                                         '" . $_POST['type'] . "',
                                         '" . ucfirst($_POST['titre']) . "',
                                         '" . $courWithExtension . "',
-                                        '" . ucfirst($_POST['metier'])  . "',
+                                        '" . ucfirst($_POST['metier']) . "',
                                         '" . $_POST['niveau'] . "',
-                                        '" . $_SESSION['ida'] . "'
+                                        '" . $_SESSION['idd'] . "'
                                     )";
                             $res = $pdo->query($req);
-                             header('location:cours.php');
+                            header('location:cours.php');
                         }
                         ?>
                     </div>
@@ -104,7 +104,8 @@ if (!isset($_SESSION['ida'])) {
                                                 <h6 class="mb-0">Cours</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                            <input type="file" name="imgcours" class="form-control" required accept=".doc,.docx,.pdf">
+                                                <input type="file" name="imgcours" class="form-control" required
+                                                    accept=".doc,.docx,.pdf">
                                             </div>
                                         </div>
                                         <hr>
@@ -113,13 +114,13 @@ if (!isset($_SESSION['ida'])) {
                                                 <h6 class="mb-0">Niveau</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <select name="niveau" class="form-select  mb-3" required>
+                                                <select name="niveau" class="form-select  mb-3">
                                                     <option value="" selected disabled>Choisir</option>
-                                                    <option value="PME 2">PME 2</option>
-                                                    <option value="PME 1">PME 1</option>
+                                                    <option value="BAC">BAC</option>
+                                                    <option value="BTS">BTS</option>
                                                     <option value="ENCG">ENCG</option>
-                                                    <option value="ISTA">ISTA</option>
-                                                    <option value="FAC">FAC</option>
+                                                    <option value="OFPPT">OFPPT</option>
+                                                    <option value="Faculté">Faculté</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -140,5 +141,5 @@ if (!isset($_SESSION['ida'])) {
     </body>
 
     </html>
-<?php } 
-ob_end_flush();?>
+<?php }
+ob_end_flush(); ?>
