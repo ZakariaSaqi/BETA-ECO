@@ -9,7 +9,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Ajouter séance</title>
+        <title>Assistant - Ajouter séance</title>
         <?php include('links.html') ?>
     </head>
     <style>

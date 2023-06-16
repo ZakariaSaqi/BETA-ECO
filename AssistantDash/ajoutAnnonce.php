@@ -32,7 +32,7 @@ if (!isset($_SESSION['ida'])) {
 <html lang="en">
 
 <head>
-    <title>Admin - Ajouter annonce</title>
+    <title>Assistant - Ajouter annonce</title>
     <?php include('links.html') ?>
 </head>
 <style>

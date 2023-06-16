@@ -23,7 +23,7 @@ if (!isset($_SESSION['ide'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Cours & Exercices</title>
+        <title>Etudiant - Cours & Exercices</title>
         <?php include('links.html') ?>
     </head>
 

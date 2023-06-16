@@ -20,7 +20,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Annonces</title>
+        <title>Assistant - Annonces</title>
         <?php include('links.html') ?>
     </head>
 

@@ -19,7 +19,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Services</title>
+        <title>Assistant - Services</title>
         <?php include('links.html') ?>
     </head>
 

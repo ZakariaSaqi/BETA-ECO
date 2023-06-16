@@ -11,7 +11,7 @@ if(!isset($_SESSION['ide'])){
   <!doctype html>
 <html lang="en">
 <head>
-  <title>Assitant - Acces désactive </title>
+  <title>Etudiant - Acces désactive </title>
   <?php include('links.html') ?>
 </head>
 <style>

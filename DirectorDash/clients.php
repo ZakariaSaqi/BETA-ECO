@@ -19,7 +19,7 @@ if (!isset($_SESSION['idd'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Clients</title>
+        <title>Directeur - Clients</title>
         <?php include('links.html') ?>
     </head>
 

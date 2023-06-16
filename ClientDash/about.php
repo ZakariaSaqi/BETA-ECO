@@ -78,7 +78,11 @@ if (!isset($_SESSION['idc'])) {
 						<div class="block-18 text-center">
 							<div class="text">
 								<?php
-								$reqC = "SELECT COUNT(*) as num from utilisateurs where type = 3";
+								$reqCons = "SELECT COUNT(*) as numCons from notification where from_client=1";
+								$resCons = $pdo->query($reqCons);
+								$rowCons = $resCons->fetch(PDO::FETCH_ASSOC);
+
+								$reqC = "SELECT COUNT(*) as num from utilisateurs where (type = 3 or type=4) ";
 								$resC = $pdo->query($reqC);
 								$rowC = $resC->fetch(PDO::FETCH_ASSOC);
 								?>
@@ -91,15 +95,15 @@ if (!isset($_SESSION['idc'])) {
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-						<div class="block-18 text-center">
-							<div class="text">
-								<strong class="number" data-number="60">0</strong>
-							</div>
-							<div class="text">
-								<span>consultant expertise</span>
-							</div>
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="<?= $rowCons['numCons'] ?>">0</strong>
+						</div>
+						<div class="text">
+							<span>consultant expertise</span>
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -248,7 +252,7 @@ if (!isset($_SESSION['idc'])) {
 			</div>
 		</section>
 
-		<section class="ftco-section testimony-section bg-light">
+		<section class="ftco-section testimony-section bg-light" id="feedback">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row justify-content-center pb-5 mb-3">

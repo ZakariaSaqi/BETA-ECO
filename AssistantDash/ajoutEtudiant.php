@@ -33,7 +33,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Cours</title>
+        <title>Assistant - Ajouter étudiant</title>
         <?php include('links.html') ?>
     </head>
 

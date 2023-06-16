@@ -72,8 +72,7 @@
 					<div class="block-18 text-center">
 						<div class="text">
 							<?php
-							$reqC = "SELECT COUNT(*) as num from utilisateurs where (type = 3 or type=4
-							)";
+							$reqC = "SELECT COUNT(*) as num from utilisateurs where (type = 3 or type=4)";
 							$resC = $pdo->query($reqC);
 							$rowC = $resC->fetch(PDO::FETCH_ASSOC);
 							?>
@@ -87,8 +86,12 @@
 				</div>
 				<div class="col-md-4 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 text-center">
+					<?php $reqCons = "SELECT COUNT(*) as numCons from notification where from_client=1";
+							$resCons = $pdo->query($reqCons);
+							$rowCons = $resCons->fetch(PDO::FETCH_ASSOC);
+							?>
 						<div class="text">
-							<strong class="number" data-number="60">0</strong>
+							<strong class="number" data-number="<?= $rowCons['numCons'] ?>">0</strong>
 						</div>
 						<div class="text">
 							<span>consultant expertise</span>

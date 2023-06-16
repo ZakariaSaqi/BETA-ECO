@@ -9,7 +9,7 @@ if (!isset($_SESSION['idd'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Ajouter cours</title>
+        <title>Directeur - Ajouter cours</title>
         <?php include('links.html') ?>
     </head>
     <style>

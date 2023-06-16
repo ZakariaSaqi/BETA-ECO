@@ -10,7 +10,7 @@ if(!isset($_SESSION['idd'])){
   ?>
   <html lang="en">
 <head>
-    <title>Admin - Inviter assistante</title>
+    <title>Directeur - Inviter assistante</title>
     <?php include('links.html') ?>
 </head>
 <style>

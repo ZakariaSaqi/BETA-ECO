@@ -29,7 +29,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Etudiants</title>
+        <title>Assistant - Etudiants</title>
         <?php include('links.html') ?>
     </head>
     <style>

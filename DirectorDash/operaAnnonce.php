@@ -9,7 +9,7 @@ if (!isset($_SESSION['idd'])) {
     <html lang="en">
 
     <head>
-        <title>Assistant - Opération</title>
+        <title>Directeur - Opération</title>
         <?php include('links.html') ?>
     </head>
     <?php

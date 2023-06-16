@@ -66,11 +66,11 @@
                   <h3><?= $datac['prenom'] . " " . $datac['nom'] ?></h3>
                   <div class="meta"><?= $datac['date_comment'] ?></div>
                   <p><?=  $datac['contenu'] ?></p>
-                  <p><a href="login.php" class="btn btn-primary px-3 py-1">Répondre</a></p>
                 </div>
                 </li> 
             </ul>
             <?php } ?>
+            <p><a href="login.php" class="btn btn-primary px-3 py-1">Répondre</a></p>
           </div>
 
         </div> <!-- .col-md-8 -->
@@ -97,12 +97,12 @@
             </div>
             <?php } ?>
           </div>
-          <div class="sidebar-box ftco-animate">
+          <!-- <div class="sidebar-box ftco-animate">
             <h3>Paragraph</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
               quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos
               fugit cupiditate numquam!</p>
-          </div>
+          </div> -->
         </div>
 
       </div>

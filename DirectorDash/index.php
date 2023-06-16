@@ -9,7 +9,7 @@ if (!isset($_SESSION['idd'])) {
   <html lang="en">
 
   <head>
-    <title>Admin - Accueil </title>
+    <title>Directeur - Accueil </title>
     <?php include('links.html') ?>
   </head>
 
@@ -37,9 +37,9 @@ if (!isset($_SESSION['idd'])) {
                       $reqNot = "select *from notification where  id_user=" . $_SESSION['idd'] ." limit 3";
                       $resNot = $pdo->query($reqNot);
                       foreach ($resNot as $dataNotif) { ?>
-                      <h6>Un nouveau message :</h6>
+                      <h6><?= $dataNotif['type_notif']?><i class="fa-solid fa-file-plus ms-3"></i></h6>
                       <p style="font-size:12px"><?php  $dataNotif['date_notif']?></p>
-                      <p> <?= substr($dataNotif['message_notif'],0,60) ?></p>
+                      <p> <?= substr($dataNotif['message_notif'],0,100) ." ..."; ?></p>
                       <hr>
                       <?php } ?>
                     </div>

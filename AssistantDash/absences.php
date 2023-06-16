@@ -26,7 +26,7 @@ if (!isset($_SESSION['ida'])) {
 <html lang="en">
 
 <head>
-    <title>Admin - Séances</title>
+    <title>Assistant - Absences</title>
     <?php include('links.html') ?>
 </head>
 <style>

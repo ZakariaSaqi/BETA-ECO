@@ -86,19 +86,21 @@ if (!isset($_SESSION['idc'])) {
                         <p>
                           <?= $datac['contenu'] ?>
                         </p>
-                        <p><a href="#reply" class="btn btn-primary px-3 py-1">Répondre</a></p>
                       </div>
                     </li>
                   </ul>
                 <?php } ?>
+                <p><a href="#reply" class="btn btn-primary px-3 py-1">Répondre</a></p>
               </div>
               <div id="reply" class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Laissez un commentaire</h3>
                 <?php
 
                 if (isset($_POST['btn'])) {
+                  $comnt = trim($_POST['commente']);
+                  $escapedcomnt = str_replace("'", "\'", $comnt);
                   $reqCom = "insert into commentaire (contenu, date_comment, id_annonce, id_user, etat) 
-                values ('" . $_POST['commente'] . "', '" . date("Y-m-d") . "', " . $_GET['id'] . ", " . $_SESSION['idc'] . ", 1)";
+                values ('" . $escapedcomnt . "', '" . date("Y-m-d") . "', " . $_GET['id'] . ", " . $_SESSION['idc'] . ", 1)";
                 echo $reqCom;
                   $resCom = $pdo -> query($reqCom);
                   echo '<center><p style="color:#fff">Votre commentaire sera poster si l\'admin accépter  <i class="fa-solid fa-check ps-2"></i></p></center>';
@@ -142,12 +144,12 @@ if (!isset($_SESSION['idc'])) {
               </div>
             <?php } ?>
           </div>
-          <div class="sidebar-box ftco-animate">
+          <!-- <div class="sidebar-box ftco-animate">
             <h3>Paragraph</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
               quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos
               fugit cupiditate numquam!</p>
-          </div>
+          </div> -->
         </div>
 
         </div>

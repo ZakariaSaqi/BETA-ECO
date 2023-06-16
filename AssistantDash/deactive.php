@@ -11,7 +11,7 @@ if(!isset($_SESSION['ida'])){
   <!doctype html>
 <html lang="en">
 <head>
-  <title>Assitant - Acces désactive </title>
+  <title>Assistant - Acces désactive </title>
   <?php include('links.html') ?>
 </head>
 <style>

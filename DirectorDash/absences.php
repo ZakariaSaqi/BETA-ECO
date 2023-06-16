@@ -26,7 +26,7 @@ if (!isset($_SESSION['idd'])) {
 <html lang="en">
 
 <head>
-    <title>Admin - Séances</title>
+    <title>Directeur - Séances</title>
     <?php include('links.html') ?>
 </head>
 <style>

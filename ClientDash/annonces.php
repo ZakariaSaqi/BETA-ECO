@@ -44,7 +44,7 @@ if(!isset($_SESSION['idc'])){
         ?>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-          <a href="annonce.php?id=<?= $dataAnn['id_annonce'] ?>" class="block-20 rounded" style="background-image: url('<?= $dataAnn['image_annonce']?>');">fix it</a>
+          <a href="annonce.php?id=<?= $dataAnn['id_annonce'] ?>" class="block-20 rounded" style="background-image: url('<?= $dataAnn['image_annonce']?>');"></a>
 
             </a>
             <div class="text p-4">
@@ -56,7 +56,7 @@ if(!isset($_SESSION['idc'])){
                   <a href="#" class="meta-chat">
                     <span class="fa fa-comment">
                       <?php
-                      $reqComnNumer = "SELECT COUNT(*) as num FROM commentaire WHERE id_annonce =". $dataAnn['id_annonce'] ;
+                      $reqComnNumer = "SELECT COUNT(*) as num FROM commentaire WHERE etat=1 AND id_annonce =". $dataAnn['id_annonce'] ;
                       $resComnNumer = $pdo->query($reqComnNumer);
                       $rowComn = $resComnNumer -> fetch(PDO :: FETCH_ASSOC);
                       echo $rowComn['num'];

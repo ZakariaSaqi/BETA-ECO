@@ -9,7 +9,7 @@ if (!isset($_SESSION['ida'])) {
   <html lang="en">
 
   <head>
-    <title>Admin - Accueil </title>
+    <title>Assistant - Accueil </title>
     <?php include('links.html') ?>
   </head>
 
@@ -42,7 +42,7 @@ if (!isset($_SESSION['ida'])) {
                       foreach ($resNot as $dataNotif) { ?>
                       <h6>Un nouveau message :</h6>
                       <p style="font-size:12px"><?php  $dataNotif['date_notif']?></p>
-                      <p> <?= substr($dataNotif['message_notif'],0,60) ?></p>
+                      <p> <?= substr($dataNotif['message_notif'],0,100)." ..."; ?></p>
                       <hr>
                       <?php } ?>
                     </div>

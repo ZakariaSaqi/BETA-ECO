@@ -57,13 +57,16 @@
 				if (isset($_POST['btn'])) {
 					$email = $_POST['email'];
 					$name = ucfirst($_POST['nom']);
-
+					$message = trim($_POST['message']);
+                    $escapedMsg = str_replace("'", "\'", $message);
+					$sub = trim($_POST['sub']);
+                    $escapedsub = str_replace("'", "\'", $sub);
 					if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 						// hadi ktverfier wesh domain kyn olala
 						list(, $domain) = explode('@', $email);
 						if (checkdnsrr($domain, 'MX')) {
 							$to = $email;
-							$sub_before = 'BETA ECO consultation gratuit : ' . $_POST['sub'];
+							$sub_before = $_POST['sub'];
 							$message = "Nom : " . $name . "<br> Email :" . $email . "<br>" . $_POST['message'];
 							$sub_after = str_replace("é", "e", $sub_before);
 
@@ -96,7 +99,7 @@
 								$req3 = "select  id_user from utilisateurs where type = 1";
 								$res3 = $pdo -> query($req3);
 								while($row3 = $res3 ->fetch(PDO :: FETCH_ASSOC)){
-									$req_notif = "insert into notification (type_notif ,message_notif, etat_notif, id_user) values('Nouvelle consultation' , '$name : ".$_POST['message']."', 1,".$row3['id_user'].")";
+									$req_notif = "insert into notification (type_notif ,message_notif, etat_notif, id_user, from_client) values('$escapedsub' , '$name : ".$escapedMsg."', 0,".$row3['id_user'].", 1)";
 									$res_notif = $pdo -> query($req_notif);
 								}
 

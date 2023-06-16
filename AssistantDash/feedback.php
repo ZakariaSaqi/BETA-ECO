@@ -36,7 +36,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Feedbacks</title>
+        <title>Assistant - Feedbacks</title>
         <?php include('links.html') ?>
     </head>
     <style>
@@ -149,9 +149,6 @@ if (!isset($_SESSION['ida'])) {
                                                 <i class="fa-solid fa-circle-xmark" style="cursor: pointer;"></i>
                                             </button>
                                         </form>
-                                        <a href="?action=Edit&id=" class="edit col-4" title="Edit"
-                                            data-toggle="tooltip"><i class="fa-solid fa-reply"></i></a>
-
                                     </td>
                                 </tr>
                                 <?php

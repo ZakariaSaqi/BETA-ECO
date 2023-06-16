@@ -21,7 +21,7 @@ if (!isset($_SESSION['idc'])) {
       }
     </style>
    <?php include('navbar.php') ?>
-    <section id="profil" class="hero-wrap hero-wrap-2" style="background-image: url(../images/website/bg_3.jpg')"
+    <section id="profil" class="hero-wrap hero-wrap-2" style="background-image: url(../images/website/bg_3.jpg)"
       data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -42,6 +42,7 @@ if (!isset($_SESSION['idc'])) {
       $escapedfeedback = str_replace("'", "\'", $feedback);
       $req = "insert into feedback (contenu,etat, id_user) values ('".$escapedfeedback."', 0, ".$_SESSION['idc'].")";
       $res = $pdo -> query($req);
+      header('location:about.php#feedback');
     }
     ?>
     <section id="services" class="ftco-section">

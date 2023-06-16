@@ -55,7 +55,7 @@ $rowPhoneEMail = $resPhoneEMail->fetch(PDO::FETCH_ASSOC);
         </ul>
       </div>
     </div>
-    <a href="login.php" class="btn btn-primary">Se connecte</a>
+    <a href="login.php" class="btn btn-primary">Se connecter</a>
 
   </div>
 </nav>

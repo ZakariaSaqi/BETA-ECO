@@ -9,7 +9,7 @@ if (!isset($_SESSION['ida'])) {
     <html lang="en">
 
     <head>
-        <title>Admin - Opération</title>
+        <title>Etudiant - Opération</title>
         <?php include('links.html') ?>
     </head>
    <?php

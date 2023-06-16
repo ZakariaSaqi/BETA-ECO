@@ -8,7 +8,7 @@ if(!isset($_SESSION['ide'])){
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Admin - Accueil </title>
+  <title>Etudiant - Accueil </title>
   <?php include('links.html'); ?>
 </head>
 <body>

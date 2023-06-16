@@ -20,7 +20,7 @@ if (!isset($_SESSION['ide'])) {
 <html lang="en">
 
 <head>
-    <title>Admin - Séances</title>
+    <title>Etudiant - Séances</title>
     <?php include('links.html') ?>
 </head>
 <style>

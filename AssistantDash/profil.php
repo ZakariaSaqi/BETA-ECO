@@ -12,7 +12,7 @@ $row = $res -> fetch(PDO :: FETCH_ASSOC);
 ?>
 <html lang="en">
 <head>
-    <title>Directeur - Profil</title>
+    <title>Assistant - Profil</title>
     <?php include('links.html') ?>
 </head>
 <body>
