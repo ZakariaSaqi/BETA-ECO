@@ -10,7 +10,7 @@ if (!isset($_SESSION['idd'])) {
         $search = trim($_GET['search']);
         $req .= " AND ( id_user = '$search' OR  nom like '%$search%' OR prenom LIKE '%$search%' OR service LIKE '%$search%' )";
     }
-    $resultsPerPage = 6;
+    $resultsPerPage = 7;
     $totalResults = $pdo->query($req)->rowCount();
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -48,20 +48,20 @@ if (!isset($_SESSION['idd'])) {
                 </div>
                 <table class="table">
                     <thead>
-                        <tr>
+                        <!-- <tr> -->
                             <!-- <th scope="col" colspan="3">
                         <button class="btn btn-light py-2 px-4">
                             <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
                             <p class="text-uppercase m-0">Ajouter une nouveau annonce</p>
                         </button>
                         </th> -->
-                            <th scope="col" colspan="5">
+                            <!-- <th scope="col" colspan="5">
                                 <button class="btn btn-light py-2 px-4">
                                     <i class="fa-solid fa-square-plus me-3" style="font-size: 1.3rem;"></i>
                                     <p class="text-uppercase m-0">Exporter au format PDF</p>
                                 </button>
-                            </th>
-                        </tr>
+                            </th> -->
+                        <!-- </tr> -->
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nom</th>

@@ -99,7 +99,8 @@
 								$req3 = "select  id_user from utilisateurs where type = 1";
 								$res3 = $pdo -> query($req3);
 								while($row3 = $res3 ->fetch(PDO :: FETCH_ASSOC)){
-									$req_notif = "insert into notification (type_notif ,message_notif, etat_notif, id_user, from_client) values('$escapedsub' , '$name : ".$escapedMsg."', 0,".$row3['id_user'].", 1)";
+									$req_notif = "insert into notification (type_notif ,message_notif, etat_notif, id_user, from_client)
+									values('$escapedsub' , '$name : ".$escapedMsg."', 0,".$row3['id_user'].", 1)";
 									$res_notif = $pdo -> query($req_notif);
 								}
 
