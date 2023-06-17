@@ -52,7 +52,7 @@ if(!isset($_SESSION['idd'])){
                 Nous espérons que ce courriel vous trouve bien. Nous souhaitons vous présenter une opportunité passionnante d\'améliorer la gestion de votre entreprise BETA ECO. Nous aimerions inviter une personne qualifiée à rejoindre notre équipe en tant qu\'assistant dans la gestion de l\'entreprise.
                 Pour faciliter le processus d\'inscription, nous avons créé un lien spécifique sur notre site web. <br><br>
                 <center><button class="btn" style="cursor:pointer;width:120px; height: 30px; background-color:#5D87FF; border: none; outline: none; border-radius: 10px;">
-                <a href="hhttp://localhost/server/BETA-ECO/AssistanteDash/register.php" style="color:#fff; text-decoration:none;">Cliquez ici</a>
+                <a href="http://localhost/server/BETA-ECO/AssistantDash/register.php" style="color:#fff; text-decoration:none;">Cliquez ici</a>
                 </button> </center> <br><br>
                 En cliquant sur ce lien, la personne pourra accéder directement à la page d\'inscription. Nous croyons que cette personne apportera une valeur ajoutée à votre entreprise grâce à ses compétences et à son expertise.
                 N\'hésitez pas à nous contacter si vous avez des questions ou si vous souhaitez discuter plus en détail de cette opportunité. Nous sommes impatients de collaborer avec vous pour renforcer et optimiser la gestion de l\'entreprise BETA ECO.
@@ -70,7 +70,7 @@ if(!isset($_SESSION['idd'])){
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
                     $mail->Username = 'sakizakaria7@gmail.com';
-                    $mail->Password = 'hraxdwrzibkbitim';
+                    $mail->Password = 'ertxnxnxvctveqge';
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 

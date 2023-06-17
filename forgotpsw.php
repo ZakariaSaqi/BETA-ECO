@@ -82,7 +82,7 @@ require_once('connexion.php');
                                             $mail->Port = 587;
 
                                             // Set up sender and recipient
-                                            $mail->setFrom('damydonsang@gmail.com', 'DAMY');
+                                            $mail->setFrom('damydonsang@gmail.com', 'BETA ECO');
                                             $mail->addAddress($to);
                                             $mail->isHTML(true);
                                             // Set email subject and body
