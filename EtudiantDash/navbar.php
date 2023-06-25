@@ -101,11 +101,7 @@ $countnotif = $resNo->rowCount()
                         <?= $dataNoti['type_notif'] ?>
                         </h5>
                         <p style="font-size:10px" class="mb-3">
-                          <?= $dataNoti['date_notif'] ?>
-                        </p>
-                        <p  class="mb-1">
-                        <i class="fa-solid fa-clock"></i>
-                          <?= $dataNoti['message_notif'] ?>
+                        <i class="fa-solid fa-clock"></i><?= $dataNoti['date_notif'] ?>
                         </p>
                     </div>
                   <?php }

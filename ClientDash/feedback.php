@@ -8,7 +8,7 @@ if (!isset($_SESSION['idc'])) {
   <html lang="en">
 
   <head>
-    <title>Admin - Cours</title>
+    <title>Client - Feedback</title>
   </head>
   <?php include('links.html'); ?>
 

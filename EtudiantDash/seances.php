@@ -56,7 +56,7 @@ if (!isset($_SESSION['ide'])) {
                         <div class="col-md-6">
                             <div class="search">
                                 <input type="text" name="search" class="form-control ps-0"
-                                    placeholder="Numero, Type, Niveau..." value="<?= htmlspecialchars($search) ?>">
+                                    placeholder="Numero, Type ..." value="<?= htmlspecialchars($search) ?>">
                                 <button class="btn btn-primary" name="search-btn"><i class="fa fa-search"
                                         style="color:white"></i></button>
                             </div>

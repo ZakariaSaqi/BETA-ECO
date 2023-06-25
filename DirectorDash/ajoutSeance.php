@@ -46,10 +46,11 @@ if (!isset($_SESSION['idd'])) {
                                     )";
                         $res = $pdo->query($req);
                         if ($res) {
-                            $req3 = "select id_user from utilisateurs u where type = 4 and etat = 1 and niveau='".$_POST['niveau']."'" ;
+                            $req3 = "select id_user from utilisateurs where type = 4 and etat = 1 and niveau='".$_POST['niveau']."'" ;
                             $res3 = $pdo->query($req3);
                             while ($row3 = $res3->fetch(PDO::FETCH_ASSOC)) {
-                                $req_notif = "insert into notification (type_notif, etat_notif, id_user) values('Nouvelle séance ". "Le ".$_POST['date'].". <br> A partire de ".$_POST['hd'].".  ', 1," . $row3['id_user'] . ")";
+                                $req_notif = "insert into notification (type_notif, etat_notif, id_user) values('Nouvelle séance ". "Le ".$_POST['date'].". 
+                                <br> A partire de ".$_POST['hd'].".  ', 1," . $row3['id_user'] . ")";
                                 $res_notif = $pdo->query($req_notif);
                             }
                         }
@@ -65,7 +66,7 @@ if (!isset($_SESSION['idd'])) {
                                                 <h6 class="mb-0">Date</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="date" name="date" id="" class="form-control">
+                                                <input type="date" name="date" id="" class="form-control" required>
                                             </div>
                                         </div>
                                         <hr>
@@ -73,14 +74,14 @@ if (!isset($_SESSION['idd'])) {
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Heure début</h6>
                                             </div>
-                                            <div class="col-sm-9 text-secondary">
+                                            <div class="col-sm-9 text-secondary" required>
                                                 <input type="time" name="hd" id="" class="form-control">
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Heure fin</h6>
+                                                <h6 class="mb-0" required>Heure fin</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="time" name="hf" id="" class="form-control">
@@ -97,7 +98,7 @@ if (!isset($_SESSION['idd'])) {
                                                 <h6 class="mb-0">Niveau</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <select name="niveau" class="form-select  mb-3">
+                                                <select name="niveau" class="form-select  mb-3" required>
                                                     <option value="" selected disabled>Choisir</option>
                                                     <option value="BAC">BAC</option>
                                                     <option value="BTS">BTS</option>
@@ -113,7 +114,7 @@ if (!isset($_SESSION['idd'])) {
                                                 <h6 class="mb-0">Type</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <select name="type" class="form-select  mb-3">
+                                                <select name="type" class="form-select  mb-3" required>
                                                     <option value="" selected disabled>Choisir</option>
                                                     <option value="Cours">Cours</option>
                                                     <option value="TP">TP</option>

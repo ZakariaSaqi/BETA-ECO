@@ -10,6 +10,6 @@ $countQuery = "SELECT COUNT(*) AS total_visitors FROM visitors";
 $result = $pdo->query($countQuery);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $totalVisitors = $row['total_visitors'];
-// echo "Number of visitors: " . $totalVisitors;
+
 
 ?>
